@@ -1,0 +1,147 @@
+.trusted-by {
+  padding: 1rem 0 4rem 0;
+  text-align: center;
+  position: relative;
+  z-index: 10;
+}
+
+.trusted-wrapper {
+  margin: 0 auto;
+  padding: 3rem 0;
+  width: 100%;
+  position: relative;
+}
+
+/* ANIMATED SCANNING BORDERS */
+.trusted-line {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.05);
+  /* Muted track */
+  overflow: hidden;
+}
+
+.trusted-line::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  width: 300px;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.8), transparent);
+}
+
+.trusted-line.top {
+  top: 0;
+}
+
+.trusted-line.bottom {
+  bottom: 0;
+}
+
+.trusted-line.top::before {
+  left: -300px;
+  animation: scanRight 8.5s linear infinite;
+}
+
+.trusted-line.bottom::before {
+  right: -300px;
+  animation: scanLeft 8.5s linear infinite;
+}
+
+@keyframes scanRight {
+  0% {
+    left: -300px;
+  }
+
+  100% {
+    left: 100%;
+  }
+}
+
+@keyframes scanLeft {
+  0% {
+    right: -300px;
+  }
+
+  100% {
+    right: 100%;
+  }
+}
+
+/* HEADERS AND TABS */
+.trusted-header {
+  margin-bottom: 3.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.trusted-title {
+  font-size: 0.75rem;
+  letter-spacing: 3px;
+  color: #ffffff;
+  margin: 0;
+  font-weight: 500;
+}
+
+.trusted-tabs {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.tab {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #475569;
+  letter-spacing: 1px;
+  cursor: pointer;
+}
+
+.tab.active {
+  color: #fff;
+  border-bottom: 2px solid #fff;
+  padding-bottom: 2px;
+}
+
+/* MARQUEE ANIMATION */
+.marquee-container {
+  display: flex;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+}
+
+.marquee-track {
+  display: flex;
+  gap: 4rem;
+  align-items: center;
+  white-space: nowrap;
+  animation: scrollMarquee 12s linear infinite;
+  min-width: max-content;
+}
+
+@keyframes scrollMarquee {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.trusted-logo-item {
+  color: #cbd5e1;
+  font-family: 'Open Sans', system-ui, sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 500;
+  font-size: 1.15rem;
+  opacity: 0.8;
+}

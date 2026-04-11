@@ -1,0 +1,72 @@
+.thesis-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 0 8rem 0;
+  text-align: center;
+  position: relative;
+  z-index: 10;
+}
+
+.thesis-line-vertical {
+  width: 1px;
+  height: 80px;
+  background: rgba(255, 255, 255, 0.15);
+  margin-bottom: 4rem;
+  position: relative;
+}
+
+.thesis-line-vertical::before,
+.thesis-line-vertical::after {
+  content: '';
+  position: absolute;
+  width: 13px;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.15);
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.thesis-line-vertical::before {
+  top: 0;
+}
+
+.thesis-line-vertical::after {
+  bottom: 0;
+}
+
+.thesis-content {
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.thesis-para {
+  font-size: 24px;
+  line-height: 1.4;
+  margin: 0;
+  font-family: 'Open Sans', system-ui, sans-serif;
+  font-weight: 500;
+  letter-spacing: -0.5px;
+}
+
+.nav-word {
+  transition: color 0.15s ease-out;
+}
+
+.nav-word.inactive {
+  color: #475569;
+  /* Darker grey to match image remaining light */
+}
+
+.nav-word.active {
+  color: #ffffff;
+  /* Bright white when revealed */
+}
+
+@media (max-width: 768px) {
+  .thesis-para {
+    font-size: 1.5rem;
+  }
+}

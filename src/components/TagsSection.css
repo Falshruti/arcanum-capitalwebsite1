@@ -1,0 +1,289 @@
+/* ======================================================
+   TagsSection — exact replica of design reference
+   ====================================================== */
+
+/* ── Flowing water animation ── */
+@keyframes flowDown {
+  from {
+    stroke-dashoffset: 18;
+  }
+
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes flowRight {
+  from {
+    stroke-dashoffset: 18;
+  }
+
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.ts-section {
+  padding: 0rem 0 2rem;
+  /* NOTE: Do NOT add overflow:hidden here — it breaks position:sticky on rows */
+}
+
+.ts-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 3rem;
+  /* overflow:clip allows clipping without creating a scroll context */
+  overflow: clip;
+}
+
+.ts-heading {
+  color: #ffffff;
+  font-size: 2rem;
+  font-weight: 300;
+  letter-spacing: -0.02em;
+  text-align: center;
+  margin-bottom: 5rem;
+}
+
+/* ── Stack wrapper — position:relative so connector SVGs can anchor here ── */
+.ts-stack {
+  position: relative;
+}
+
+/* ── Per-row vertical dashed segment — SVG-based, connector rows only ── */
+.ts-vseg {
+  position: absolute;
+  top: 0;
+  bottom: -2.8rem;
+  /* extend into margin gap to join next row */
+  width: 20px;
+  /* wider container so SVG line is centered */
+  pointer-events: none;
+  z-index: 1;
+  /* left: set inline per row */
+}
+
+.ts-vseg svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* Vertical lines flow downward */
+.ts-vseg svg line {
+  animation: flowDown 3s linear infinite;
+}
+
+/* First connector row: clip top half so line starts at card midpoint */
+.ts-vseg--first {
+  clip-path: inset(34% 0 0 0);
+}
+
+/* Last connector row: stop at midpoint, no gap extension */
+.ts-vseg--last {
+  bottom: 0;
+  clip-path: inset(0 0 50% 0);
+}
+
+/* ── Each row ── */
+.ts-row {
+  position: sticky;
+  display: flex;
+  align-items: center;
+  margin-bottom: 2.4rem;
+  max-width: 100%;
+  /* prevent any single row from exceeding container */
+  box-sizing: border-box;
+  /* marginLeft & marginRight controlled inline per row */
+}
+
+/* ── Horizontal dashed branch from vertical line to row's left edge ── */
+.ts-hline-wrap {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 2px;
+  pointer-events: none;
+  z-index: 1;
+  /* left & width set inline per row */
+}
+
+.ts-hline-wrap svg {
+  display: block;
+  height: 2px;
+}
+
+/* Horizontal branch lines flow rightward */
+.ts-hline-wrap svg line {
+  animation: flowRight 3s linear infinite;
+}
+
+/* Bridge lines between dual boxes flow rightward */
+.ts-bridge svg line {
+  animation: flowRight 3s linear infinite;
+}
+
+
+/* ── Base card ── */
+.ts-card {
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.15rem 2.2rem;
+  min-height: 72px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.28);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  position: relative;
+  z-index: 2;
+}
+
+.ts-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 42px rgba(0, 0, 0, 0.38);
+}
+
+/* White card */
+.ts-card--white {
+  background: #ffffff;
+  color: #071627;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  flex: 1;
+  min-width: 0;
+  /* allow flex children to shrink */
+}
+
+/* Dark "End User" card */
+.ts-card--dark {
+  background: #2c3e52;
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  width: 100%;
+  justify-content: flex-start;
+}
+
+/* Small left card in dual rows */
+.ts-card--mini {
+  flex: 0 0 auto;
+  white-space: nowrap;
+}
+
+.ts-card-label {
+  font-size: 1.05rem;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: inherit;
+  min-width: 0;
+  flex: 1;
+}
+
+/* ── Logo stack ── */
+.ts-logos {
+  display: flex;
+  align-items: center;
+  margin-left: 1.5rem;
+  flex-shrink: 0;
+}
+
+.ts-logo-circle {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 3px solid #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  font-size: 0.85rem;
+  font-weight: 700;
+  margin-left: -14px;
+  position: relative;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  flex-shrink: 0;
+}
+
+.ts-logo-circle:first-child {
+  margin-left: 0;
+}
+
+.ts-logo-plus {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #eef2f7;
+  color: #94a3b8;
+  border: 1px solid #dde4ee;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  margin-left: 8px;
+  flex-shrink: 0;
+}
+
+/* ── Dual row: mini box + bridge + right box ── */
+.ts-dual {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  min-width: 0;
+  overflow: hidden;
+  /* prevent dual row from bleeding right */
+}
+
+/* Dashed bridge between the two boxes */
+.ts-bridge {
+  width: 36px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
+
+/* Right (larger) card in dual rows */
+.ts-dual-right {
+  flex: 1;
+  min-width: 0;
+}
+
+/* ── End User row: centered dark box  ── */
+.ts-enduser-center {
+  width: 65%;
+  margin: 0 auto;
+}
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+
+  .ts-vline-global,
+  .ts-hline-wrap,
+  .ts-bridge {
+    display: none;
+  }
+
+  .ts-row {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    position: relative;
+  }
+
+  .ts-dual {
+    flex-direction: column;
+    gap: 1rem;
+    overflow: visible;
+  }
+
+  .ts-enduser-center {
+    width: 100%;
+  }
+
+  .ts-card-label {
+    white-space: normal;
+    overflow: visible;
+    text-overflow: unset;
+  }
+}

@@ -1,0 +1,197 @@
+/* ======================================================
+   InvestmentsStack — exact replica of grid design reference
+   ====================================================== */
+
+.investments-stack {
+  padding: 0rem 0 0rem;
+  color: #fff;
+  font-family: 'Inter', system-ui, sans-serif;
+  text-align: center;
+  cursor: default; /* Reverted to default */
+}
+
+.stack-header {
+  margin-bottom: 3rem;
+}
+
+.stack-title {
+  font-size: 35px;
+  font-weight: 400;
+  line-height: 1.25;
+  color: #ccd6f6;
+  max-width: 1000px;
+}
+
+.stack-title .highlight {
+  color: #fff;
+  font-weight: 600;
+}
+
+/* ── Grid Container ── */
+.stack-grid-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.stack-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.highlight-circle {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: opacity 0.3s ease;
+  cursor: default;
+}
+
+.highlight-circle:hover {
+  opacity: 0.8; /* Subtle opacity change instead of scale */
+}
+
+.stack-card {
+  padding: 2.2rem 2rem;
+  text-align: left;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  margin: -0.5px;
+  /* Ensures borders overlap cleanly */
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  min-height: 250px;
+  /* Ensure consistent height for pattern */
+}
+
+/* ── Hover Pattern (Image Effect) ── */
+.stack-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #000;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  z-index: 0;
+}
+
+/* The exact pattern from the screenshot recreated with high-precision CSS */
+.stack-card:hover::before {
+  opacity: 1;
+  background:
+    /* Horizontal Dividers between bands */
+    linear-gradient(to bottom,
+      transparent 19%, rgba(255, 255, 255, 0.05) 19.5%, transparent 20%,
+      transparent 39%, rgba(255, 255, 255, 0.05) 39.5%, transparent 40%,
+      transparent 59%, rgba(255, 255, 255, 0.05) 59.5%, transparent 60%,
+      transparent 79%, rgba(255, 255, 255, 0.05) 79.5%, transparent 80%),
+    /* Five Rows of Gradients creating the 'plus' mask */
+    linear-gradient(to right, rgba(160, 180, 255, 0.08) 0%, rgba(255, 255, 255, 0.12) 25%, transparent 35%, transparent 65%, rgba(255, 255, 255, 0.12) 75%, rgba(160, 180, 255, 0.08) 100%) 0% 0% / 100% 20% no-repeat,
+    linear-gradient(to right, rgba(160, 180, 255, 0.08) 0%, rgba(255, 255, 255, 0.1) 20%, transparent 30%, transparent 70%, rgba(255, 255, 255, 0.1) 80%, rgba(160, 180, 255, 0.08) 100%) 0% 25% / 100% 20% no-repeat,
+    linear-gradient(to right, rgba(160, 180, 255, 0.08) 0%, rgba(255, 255, 255, 0.08) 15%, transparent 25%, transparent 75%, rgba(255, 255, 255, 0.08) 85%, rgba(160, 180, 255, 0.08) 100%) 0% 50% / 100% 20% no-repeat,
+    linear-gradient(to right, rgba(160, 180, 255, 0.08) 0%, rgba(255, 255, 255, 0.1) 20%, transparent 30%, transparent 70%, rgba(255, 255, 255, 0.1) 80%, rgba(160, 180, 255, 0.08) 100%) 0% 75% / 100% 20% no-repeat,
+    linear-gradient(to right, rgba(160, 180, 255, 0.08) 0%, rgba(255, 255, 255, 0.12) 25%, transparent 35%, transparent 65%, rgba(255, 255, 255, 0.12) 75%, rgba(160, 180, 255, 0.08) 100%) 0% 100% / 100% 20% no-repeat,
+    #050810;
+  /* Base background from screenshot */
+}
+
+/* Removed redundant gradient pseudo-element */
+.stack-card::after {
+  display: none;
+}
+
+.card-title {
+  font-size: 1.4rem;
+  font-weight: 600;
+  line-height: 1.35;
+  margin-bottom: 0.8rem;
+  color: #fff;
+  position: relative;
+  z-index: 2;
+}
+
+.card-desc {
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: #8892b0;
+  margin-bottom: auto;
+  /* Push tag to bottom */
+  position: relative;
+  z-index: 2;
+}
+
+.card-tag {
+  position: relative;
+  z-index: 2;
+  margin-top: 10px;
+}
+
+.tag-btn {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #ccd6f6;
+  padding: 0.4rem 1.2rem;
+  border-radius: 2px;
+  /* Square edges as per screenshot */
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  cursor: pointer; /* Keep for button */
+  transition: all 0.2s;
+  position: relative;
+  z-index: 10;
+}
+
+.tag-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+/* ── Footer ── */
+.stack-footer {
+  margin-top: 5rem;
+}
+
+.view-all-btn {
+  background: #fff;
+  color: #011222;
+  border: none;
+  padding: 1rem 3rem;
+  border-radius: 9999px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.view-all-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 20px rgba(255, 255, 255, 0.15);
+}
+
+/* ── Responsive Styling ── */
+@media (max-width: 1024px) {
+  .stack-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .stack-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .stack-title {
+    font-size: 2rem;
+  }
+}
