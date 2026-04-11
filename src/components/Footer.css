@@ -139,11 +139,16 @@
 /* ── Subscribe Area ── */
 .subscribe-area {
   max-width: 950px;
-  /* Highly expansive width as per user's '2nd point' */
   width: 100%;
   text-align: right;
   margin-left: auto;
-  /* Ensure it grows left from the right edge */
+}
+
+@media (max-width: 900px) {
+  .subscribe-area {
+    text-align: center;
+    margin: 0 auto;
+  }
 }
 
 .subscribe-title {
@@ -307,5 +312,10 @@
     flex-direction: column;
     gap: 2rem;
     text-align: center;
+    align-items: center;
+  }
+
+  .footer-social-icons {
+    justify-content: center;
   }
 }

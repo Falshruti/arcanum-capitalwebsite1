@@ -79,7 +79,20 @@
   .hero-inner {
     flex-direction: column;
     justify-content: center;
-    text-align: left;
+    text-align: center;
     gap: 3rem;
+  }
+
+  .hero-logo-img {
+    margin: 0 auto 2rem;
+  }
+
+  .hero-title {
+    font-size: 32px;
+  }
+
+  .globe-placeholder {
+    width: 320px;
+    height: 320px;
   }
 }

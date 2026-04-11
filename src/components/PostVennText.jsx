@@ -48,7 +48,8 @@ export default function PostVennText() {
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center',
-        textAlign: 'center'
+        textAlign: 'center',
+        padding: '2rem'
       }}
     >
       <div className="thesis-line-vertical"></div>

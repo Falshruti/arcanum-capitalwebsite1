@@ -22,7 +22,14 @@
   line-height: 1.6;
   margin-bottom: 5rem;
   color: #8892b0;
-  /* Dimmed text color */
+}
+
+@media (max-width: 900px) {
+  .vision-heading {
+    text-align: center;
+    font-size: 1.8rem;
+    margin-bottom: 3rem;
+  }
 }
 
 .vision-heading .highlight {
@@ -148,12 +155,18 @@
 .fund-label {
   font-family: 'Bellefair', serif;
   font-size: 1.25rem;
-  /* Up-scaled for wider view */
   font-weight: 400;
   letter-spacing: 0.06em;
   color: #ffffff;
   margin-bottom: 2.8rem;
   text-transform: uppercase;
+}
+
+@media (max-width: 900px) {
+  .fund-label {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
 }
 
 .info-block {
@@ -214,12 +227,16 @@
   padding: 0.8rem 2.8rem;
   border-radius: 9999px;
   font-size: 1.05rem;
+  display: flex;
   align-items: center;
+  justify-content: center;
   text-align: center;
   cursor: pointer;
   transition: all 0.25s ease-in-out;
   backdrop-filter: blur(8px);
   box-shadow: 0 4px 15px rgba(255, 255, 255, 0.05);
+  width: fit-content;
+  margin: 0 auto;
 }
 
 .inquire-btn:hover {
@@ -386,9 +403,25 @@
   }
 
   .invest-table th:nth-child(2),
-  .invest-table td:nth-child(2) {
+  .invest-table td:nth-child(2),
+  .invest-table th:nth-child(3),
+  .invest-table td:nth-child(3) {
     display: none;
-    /* Hide ENTRY on mobile for space */
+    /* Only show Name and Year on very small mobile for focus */
+  }
+
+  .invest-table th, .invest-table td {
+    padding: 1.5rem 0.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .vision-heading {
+    font-size: 1.5rem;
+  }
+  
+  .brand-acronym {
+    font-size: 2.5rem;
   }
 }
 

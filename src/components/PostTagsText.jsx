@@ -41,8 +41,8 @@ export default function PostTagsText() {
       className="thesis-section container"
       ref={sectionRef}
       style={{
-        padding: '0',
-        height: '80vh',
+        padding: '2rem 0',
+        minHeight: '80vh',
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
