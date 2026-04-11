@@ -1,10 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import './ThesisText.css';
 
-const textContent = "The development of this core infrastructure is driving the global adoption of Stablecoins.";
-const boldStart = 8;
-const boldLength = 2;
-
 export default function PostTagsText() {
   const [scrollProgress, setScrollProgress] = useState(0);
   const sectionRef = useRef(null);

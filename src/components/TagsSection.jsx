@@ -1,4 +1,5 @@
 import React from 'react';
+// eslint-disable-next-line no-unused-vars
 import { motion } from 'framer-motion';
 import './TagsSection.css';
 
@@ -73,13 +74,7 @@ const stackRows = [
 
 const BASE_LEFT = 50; // px space reserved for the vertical line
 
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: { staggerChildren: 0.12, delayChildren: 0.1 },
-  },
-};
+
 
 const rowVariants = {
   hidden: { opacity: 0.3, filter: 'grayscale(100%)', y: 30 },
@@ -97,7 +92,7 @@ export default function TagsSection() {
       <div className="ts-container">
 
         <div className="ts-stack">
-          {stackRows.map((row, idx) => {
+          {stackRows.map((row) => {
             const totalLeft = BASE_LEFT + row.extraIndent;
 
             return (
