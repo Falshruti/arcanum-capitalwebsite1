@@ -47,17 +47,18 @@
   top: 0;
   width: 400px;
   height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.6), transparent);
 }
 
 .vision-line.top::before {
   left: -400px;
-  animation: vision-scanRight 10s linear infinite;
+  background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 1) 100%);
+  animation: vision-scanRight 8.5s linear infinite;
 }
 
 .vision-line.bottom::before {
   right: -400px;
-  animation: vision-scanLeft 10s linear infinite;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 1) 0%, transparent 100%);
+  animation: vision-scanLeft 8.5s linear infinite;
 }
 
 @keyframes vision-scanRight {
@@ -218,6 +219,7 @@
   cursor: pointer;
   transition: all 0.25s ease-in-out;
   backdrop-filter: blur(8px);
+  box-shadow: 0 4px 15px rgba(255, 255, 255, 0.05);
 }
 
 .inquire-btn:hover {
@@ -251,7 +253,8 @@
   font-size: 14px;
   font-weight: 500;
   letter-spacing: 0.12em;
-  color: #64748b;
+  color: #ffffff;
+  opacity: 0.65;
   /* Dimmed header text */
   text-transform: uppercase;
   padding: 1.5rem 1rem;
@@ -332,8 +335,8 @@
   padding: 0.35rem 0.8rem;
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 25px;
-  font-size: 13px;
-  font-weight: 600;
+  font-size: 12px;
+  font-weight: 400;
   color: #ffffff;
   text-transform: uppercase;
   letter-spacing: 0.08em;
@@ -345,7 +348,7 @@
 .portfolio-btn-wrap {
   display: flex;
   justify-content: center;
-  margin-top: 1rem;
+  margin-top: 2.5rem;
 }
 
 .portfolio-btn {
@@ -357,12 +360,12 @@
   font-size: 0.95rem;
   font-weight: 600;
   cursor: pointer;
-  transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.2s;
+  transition: transform 0.2s;
+  box-shadow: 0 4px 15px rgba(255, 255, 255, 0.05);
 }
 
 .portfolio-btn:hover {
-  transform: scale(1.04);
-  box-shadow: 0 8px 24px rgba(255, 255, 255, 0.15);
+  transform: translateY(-2px);
 }
 
 /* ── Responsive Styling ── */

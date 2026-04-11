@@ -18,16 +18,15 @@
 
 .stack-header {
   margin-bottom: 3rem;
-  padding: 0px 6rem;
   text-align: left;
+  padding: 0rem 2rem;
 }
 
 .stack-title {
   font-size: 35px;
   font-weight: 400;
   line-height: 1.6;
-  color: #ccd6f6;
-  max-width: 1000px;
+  color: rgba(255, 255, 255, 0.65);
 }
 
 .stack-title .highlight {
@@ -145,9 +144,9 @@
 .tag-btn {
   background: transparent;
   border: 1px solid rgba(255, 255, 255, 0.15);
-  color: #ccd6f6;
-  padding: 0.4rem 1.2rem;
-  border-radius: 2px;
+  color: #ffffff;
+  padding: 0.6rem 1.2rem;
+  border-radius: 25px;
   /* Square edges as per screenshot */
   font-size: 0.75rem;
   font-weight: 600;
@@ -164,6 +163,7 @@
   background: rgba(255, 255, 255, 0.1);
   color: #fff;
   border-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
 }
 
 /* ── Footer ── */
@@ -180,12 +180,12 @@
   font-size: 1rem;
   font-weight: 600;
   cursor: pointer;
-  transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transition: transform 0.2s, box-shadow 0.2s;
 }
 
 .view-all-btn:hover {
-  transform: scale(1.05);
-  box-shadow: 0 8px 20px rgba(255, 255, 255, 0.15);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(255, 255, 255, 0.2);
 }
 
 /* ── Responsive Styling ── */

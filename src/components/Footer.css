@@ -206,6 +206,8 @@
 .subscribe-pill:hover {
   background: #e2e8f0;
   color: #334155;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(255, 255, 255, 0.2);
 }
 
 /* ── Brand Identity ── */

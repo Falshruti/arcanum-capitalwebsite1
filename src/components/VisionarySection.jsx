@@ -7,11 +7,11 @@ import logo4 from '../assets/visiontablelogo/logo4.png';
 import logo5 from '../assets/visiontablelogo/logo5.png';
 
 const investments = [
-  { name: 'HIFI', entry: 'Seed', invested: '2024', sector: 'Payment Rails', logo: logo1 },
-  { name: 'utexo', entry: 'Seed', invested: '2025', sector: 'Stablecoin Settlement', logo: logo2 },
-  { name: 'Crosspoint', entry: 'Seed', invested: '2024', sector: 'Banking, Wallets & Custody', logo: logo3 },
-  { name: 'Momentum', entry: 'Pre-Seed', invested: '2025', sector: 'Programmable Finance', logo: logo4 },
-  { name: 'NET', entry: 'Pre-Seed', invested: '2025', sector: 'Stablecoin Settlement', logo: logo5 },
+  { name: 'HIFI', entry: 'Seed', invested: '2024', sector: 'Payment Rails', logo: logo1, width: '42px' },
+  { name: 'utexo', entry: 'Seed', invested: '2025', sector: 'Stablecoin Settlement', logo: logo2, width: '70px' },
+  { name: 'Crosspoint', entry: 'Seed', invested: '2024', sector: 'Banking, Wallets & Custody', logo: logo3, width: '100px' },
+  { name: 'Momentum', entry: 'Pre-Seed', invested: '2025', sector: 'Programmable Finance', logo: logo4, width: '100px' },
+  { name: 'NET', entry: 'Pre-Seed', invested: '2025', sector: 'Stablecoin Settlement', logo: logo5, width: '60px' },
 ];
 
 export default function VisionarySection() {
@@ -98,7 +98,12 @@ export default function VisionarySection() {
                   <td>
                     <div className="comp-name">
                       {item.logo ? (
-                        <img src={item.logo} alt={item.name} className="table-logo" />
+                        <img
+                          src={item.logo}
+                          alt={item.name}
+                          className="table-logo"
+                          style={{ width: item.width || 'auto' }}
+                        />
                       ) : (
                         <div className="dot-logo"></div>
                       )}
