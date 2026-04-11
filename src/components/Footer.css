@@ -34,9 +34,9 @@
 }
 
 .footer-container {
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0 auto;
-  padding: 0 4rem;
+  padding: 0 2rem;
   position: relative;
   z-index: 1;
 }
@@ -60,7 +60,8 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 1.5rem;
-  perspective: 1000px; /* Enable 3D space */
+  perspective: 1000px;
+  /* Enable 3D space */
 }
 
 .highlight-circle {
@@ -74,23 +75,59 @@
 }
 
 .highlight-circle:hover {
-  transform: scale(1.15); /* Removed the rotate(5deg) to prioritize the 3D spin */
-  animation-play-state: paused; /* Pause on hover to allow looking at the image */
+  transform: scale(1.15);
+  /* Removed the rotate(5deg) to prioritize the 3D spin */
+  animation-play-state: paused;
+  /* Pause on hover to allow looking at the image */
   border-color: rgba(255, 255, 255, 0.3);
 }
 
 /* Individualized Random-feel Delays and Durations */
-.highlight-circle:nth-child(1) { animation-duration: 9s;  animation-delay: 2s; }
-.highlight-circle:nth-child(2) { animation-duration: 13s; animation-delay: 5s; }
-.highlight-circle:nth-child(3) { animation-duration: 11s; animation-delay: 1s; }
-.highlight-circle:nth-child(4) { animation-duration: 15s; animation-delay: 8s; }
-.highlight-circle:nth-child(5) { animation-duration: 10s; animation-delay: 12s; }
-.highlight-circle:nth-child(6) { animation-duration: 14s; animation-delay: 3s; }
+.highlight-circle:nth-child(1) {
+  animation-duration: 9s;
+  animation-delay: 2s;
+}
+
+.highlight-circle:nth-child(2) {
+  animation-duration: 13s;
+  animation-delay: 5s;
+}
+
+.highlight-circle:nth-child(3) {
+  animation-duration: 11s;
+  animation-delay: 1s;
+}
+
+.highlight-circle:nth-child(4) {
+  animation-duration: 15s;
+  animation-delay: 8s;
+}
+
+.highlight-circle:nth-child(5) {
+  animation-duration: 10s;
+  animation-delay: 12s;
+}
+
+.highlight-circle:nth-child(6) {
+  animation-duration: 14s;
+  animation-delay: 3s;
+}
 
 @keyframes coin-spin {
-  0%   { transform: rotateY(0deg); }
-  10%  { transform: rotateY(360deg); } /* Fast flip at the start */
-  100% { transform: rotateY(360deg); } /* Stay still for the rest of the duration */
+  0% {
+    transform: rotateY(0deg);
+  }
+
+  10% {
+    transform: rotateY(360deg);
+  }
+
+  /* Fast flip at the start */
+  100% {
+    transform: rotateY(360deg);
+  }
+
+  /* Stay still for the rest of the duration */
 }
 
 .highlight-circle img {

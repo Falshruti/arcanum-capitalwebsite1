@@ -1,7 +1,3 @@
-.team-section {
-  padding: 5rem 0;
-}
-
 .team-section .section-title {
   font-size: 2rem;
   margin-bottom: 4rem;
@@ -60,7 +56,8 @@
 }
 
 .team-member:hover .member-img {
-  transform: scale(1.05); /* Match the placeholder lift effect */
+  transform: scale(1.05);
+  /* Match the placeholder lift effect */
   filter: grayscale(0%);
 }
 

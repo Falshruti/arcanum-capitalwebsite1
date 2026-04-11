@@ -3,15 +3,17 @@
    ====================================================== */
 
 .investments-stack {
-  padding: 0rem 0 0rem;
   color: #fff;
   font-family: 'Inter', system-ui, sans-serif;
   text-align: center;
-  cursor: default; /* Reverted to default */
+  cursor: default;
+  /* Reverted to default */
 }
 
 .stack-header {
   margin-bottom: 3rem;
+  padding: 0px 6rem;
+  text-align: left;
 }
 
 .stack-title {
@@ -29,10 +31,9 @@
 
 /* ── Grid Container ── */
 .stack-grid-container {
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0 auto;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  background: rgba(255, 255, 255, 0.02);
+  padding: 0 2rem;
 }
 
 .stack-grid {
@@ -51,7 +52,8 @@
 }
 
 .highlight-circle:hover {
-  opacity: 0.8; /* Subtle opacity change instead of scale */
+  opacity: 0.8;
+  /* Subtle opacity change instead of scale */
 }
 
 .stack-card {
@@ -145,7 +147,8 @@
   font-weight: 600;
   letter-spacing: 0.05em;
   text-transform: uppercase;
-  cursor: pointer; /* Keep for button */
+  cursor: pointer;
+  /* Keep for button */
   transition: all 0.2s;
   position: relative;
   z-index: 10;
