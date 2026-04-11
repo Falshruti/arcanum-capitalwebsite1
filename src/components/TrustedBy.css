@@ -1,6 +1,10 @@
 .trusted-by {
+  height: 100vh;
   padding: 4rem 2rem;
   box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   text-align: center;
   position: relative;
   z-index: 10;
