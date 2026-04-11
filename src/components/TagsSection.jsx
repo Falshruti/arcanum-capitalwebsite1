@@ -82,11 +82,12 @@ const containerVariants = {
 };
 
 const rowVariants = {
-  hidden: { opacity: 0, y: 16 },
+  hidden: { opacity: 0.3, filter: 'grayscale(100%)', y: 30 },
   visible: {
     opacity: 1,
+    filter: 'grayscale(0%)',
     y: 0,
-    transition: { duration: 0.55, ease: 'easeOut' },
+    transition: { duration: 0.7, ease: 'easeOut' },
   },
 };
 
@@ -95,13 +96,7 @@ export default function TagsSection() {
     <section className="ts-section">
       <div className="ts-container">
 
-        <motion.div
-          className="ts-stack"
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: '-60px' }}
-        >
+        <div className="ts-stack">
           {stackRows.map((row, idx) => {
             const totalLeft = BASE_LEFT + row.extraIndent;
 
@@ -110,9 +105,10 @@ export default function TagsSection() {
                 key={row.id}
                 className={`ts-row ts-row--${row.type}`}
                 variants={rowVariants}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: false, margin: '-10%' }}
                 style={{
-                  top: `${60 + idx * 36}px`,
-                  zIndex: idx,
                   marginLeft: `${totalLeft}px`,
                   marginRight: `${Math.max(row.extraIndent, 20)}px`,
                 }}
@@ -206,7 +202,7 @@ export default function TagsSection() {
               </motion.div>
             );
           })}
-        </motion.div>
+        </div>
       </div>
     </section>
   );

@@ -87,9 +87,8 @@
   clip-path: inset(0 0 50% 0);
 }
 
-/* ── Each row ── */
 .ts-row {
-  position: sticky;
+  position: relative;
   display: flex;
   align-items: center;
   margin-bottom: 2.4rem;
