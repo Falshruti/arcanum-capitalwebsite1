@@ -1,14 +1,21 @@
 .thesis-section {
+  height: 250vh;
+  position: relative;
+  z-index: 10;
+}
+
+.thesis-sticky {
+  position: sticky;
+  top: 0;
   height: 100vh;
-  padding: 4rem 2rem;
-  box-sizing: border-box;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
-  position: relative;
-  z-index: 10;
+  padding: 4rem 2rem;
+  box-sizing: border-box;
+  overflow: hidden;
 }
 
 .thesis-line-vertical {
@@ -39,7 +46,7 @@
 }
 
 .thesis-content {
-  max-width: 1400px;
+  max-width: 400px;
   display: flex;
   flex-direction: column;
   gap: 3rem;

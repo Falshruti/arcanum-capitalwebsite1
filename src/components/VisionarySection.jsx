@@ -1,12 +1,17 @@
 import React from 'react';
 import './VisionarySection.css';
+import logo1 from '../assets/visiontablelogo/logo1.png';
+import logo2 from '../assets/visiontablelogo/logo2.png';
+import logo3 from '../assets/visiontablelogo/logo3.png';
+import logo4 from '../assets/visiontablelogo/logo4.png';
+import logo5 from '../assets/visiontablelogo/logo5.png';
 
 const investments = [
-  { name: 'HIFI', entry: 'Seed', invested: '2024', sector: 'Payment Rails' },
-  { name: 'utexo', entry: 'Seed', invested: '2025', sector: 'Stablecoin Settlement' },
-  { name: 'Crosspoint', entry: 'Seed', invested: '2024', sector: 'Banking, Wallets & Custody' },
-  { name: 'Momentum', entry: 'Pre-Seed', invested: '2025', sector: 'Programmable Finance' },
-  { name: 'NET', entry: 'Pre-Seed', invested: '2025', sector: 'Stablecoin Settlement' },
+  { name: 'HIFI', entry: 'Seed', invested: '2024', sector: 'Payment Rails', logo: logo1 },
+  { name: 'utexo', entry: 'Seed', invested: '2025', sector: 'Stablecoin Settlement', logo: logo2 },
+  { name: 'Crosspoint', entry: 'Seed', invested: '2024', sector: 'Banking, Wallets & Custody', logo: logo3 },
+  { name: 'Momentum', entry: 'Pre-Seed', invested: '2025', sector: 'Programmable Finance', logo: logo4 },
+  { name: 'NET', entry: 'Pre-Seed', invested: '2025', sector: 'Stablecoin Settlement', logo: logo5 },
 ];
 
 export default function VisionarySection() {
@@ -84,7 +89,7 @@ export default function VisionarySection() {
                 <th>Name</th>
                 <th>Entry</th>
                 <th>Invested</th>
-                <th>Industry</th>
+                <th>SECTOR</th>
               </tr>
             </thead>
             <tbody>
@@ -92,8 +97,11 @@ export default function VisionarySection() {
                 <tr key={idx}>
                   <td>
                     <div className="comp-name">
-                      <div className="dot-logo"></div>
-                      {item.name}
+                      {item.logo ? (
+                        <img src={item.logo} alt={item.name} className="table-logo" />
+                      ) : (
+                        <div className="dot-logo"></div>
+                      )}
                     </div>
                   </td>
                   <td className="entry-type">{item.entry}</td>

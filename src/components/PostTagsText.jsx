@@ -1,6 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react';
 import './ThesisText.css';
 
+const textContent = "The development of this core infrastructure is driving the global adoption of Stablecoins.";
+
 export default function PostTagsText() {
   const [scrollProgress, setScrollProgress] = useState(0);
   const sectionRef = useRef(null);
@@ -32,42 +34,42 @@ export default function PostTagsText() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const lines = [
-    "The development of this core infrastructure",
-    "is driving the global adoption",
-    "of Stablecoins."
-  ];
-
-  let wordCounter = 0;
+  const words = textContent.split(' ');
 
   return (
-    <section className="thesis-section container" ref={sectionRef} style={{ padding: '0 0' }}>
+    <section
+      className="thesis-section container"
+      ref={sectionRef}
+      style={{
+        padding: '0',
+        height: '80vh',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
+        textAlign: 'center'
+      }}
+    >
+      <div className="thesis-content" style={{ maxWidth: '400px', paddingBottom: '2rem' }}>
+        <p className="thesis-para" style={{ fontSize: '1.6rem', lineHeight: '1.6' }}>
+          {words.map((word, wIdx) => {
+            // Words: The(0) development(1) of(2) this(3) core(4) infrastructure(5)
+            const isTarget = wIdx === 4 || wIdx === 5;
 
+            let isActive = false;
+            if (isTarget) {
+              const targetWordIdx = wIdx - 4; // 0, 1
+              const activationPoint = (targetWordIdx + 1) / 3;
+              isActive = scrollProgress >= activationPoint;
+            }
 
-      <div className="thesis-content" style={{ maxWidth: '600px', paddingBottom: '2rem' }}>
-        <p className="thesis-para" style={{ fontSize: '1.6rem', lineHeight: '1.6', textAlign: 'center' }}>
-          {lines.map((line, lIdx) => {
-            const lineWords = line.split(' ');
             return (
-              <div key={lIdx} style={{ marginBottom: '0.5rem' }}>
-                {lineWords.map((word, wIdx) => {
-                  const currentWordIndex = wordCounter++;
-                  const totalWords = lines.join(' ').split(' ').length;
-                  const activationPoint = currentWordIndex / totalWords;
-                  const isActive = scrollProgress >= activationPoint;
-                  const isBold = word.toLowerCase().includes('core infrastructure');
-
-                  return (
-                    <span
-                      key={wIdx}
-                      className={`nav-word ${isActive ? 'active' : 'inactive'} ${isBold ? 'bold-word' : ''}`}
-                      style={isBold ? { color: isActive ? '#fff' : '#64748b', fontWeight: '700' } : {}}
-                    >
-                      {word}{' '}
-                    </span>
-                  );
-                })}
-              </div>
+              <span
+                key={wIdx}
+                className={`nav-word ${isActive ? 'active' : 'inactive'}`}
+              >
+                {word}{' '}
+              </span>
             );
           })}
         </p>

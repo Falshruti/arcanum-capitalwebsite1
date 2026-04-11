@@ -24,7 +24,7 @@
 }
 
 .ts-section {
-  height: 100vh;
+  min-height: 100vh;
   padding: 4rem 2rem;
   box-sizing: border-box;
   display: flex;
@@ -36,7 +36,7 @@
 .ts-container {
   max-width: 1400px;
   margin: 0 auto;
-  padding: 0 2rem;
+  padding: 1.5rem 2rem; /* Added vertical padding to prevent hover clip */
   /* overflow:clip allows clipping without creating a scroll context */
   overflow: clip;
 }
@@ -234,8 +234,8 @@
   align-items: center;
   width: 100%;
   min-width: 0;
-  overflow: hidden;
-  /* prevent dual row from bleeding right */
+  overflow: visible;
+  /* prevent dual row from bleeding right was hidden but causes hover clipping */
 }
 
 /* Dashed bridge between the two boxes */

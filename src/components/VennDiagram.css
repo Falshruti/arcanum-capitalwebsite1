@@ -36,6 +36,9 @@
   color: var(--text-secondary);
   cursor: pointer;
   z-index: 1;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.03) 0%, transparent 70%);
+  background-color: transparent;
+  transition: background-color 0.4s ease;
 }
 
 .venn-circle::before {
@@ -43,16 +46,12 @@
   position: absolute;
   inset: 0;
   border-radius: 50%;
-  border: 2px dashed rgba(255, 255, 255, 0.45);
-  background: radial-gradient(circle, rgba(255, 255, 255, 0.03) 0%, transparent 70%);
-  transition: all 0.4s ease;
+  border: none;
+  background-image: url("data:image/svg+xml,%3Csvg width='320' height='320' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='160' cy='160' r='159' fill='none' stroke='rgba(255, 255, 255, 0.5)' stroke-width='1' stroke-dasharray='8 14'/%3E%3C/svg%3E");
+  transition: opacity 0.4s ease;
   z-index: -1;
   pointer-events: none;
-}
-
-.venn-circle.venn-top::before,
-.venn-circle.venn-right::before {
-  animation: spinSlow 35s linear infinite;
+  animation: spinSlow 40s linear infinite;
 }
 
 @keyframes spinSlow {
@@ -60,9 +59,12 @@
   100% { transform: rotate(360deg); }
 }
 
-.venn-solid::before {
-  background: rgba(255, 255, 255, 0.1);
-  border: 2px solid rgba(255, 255, 255, 0.2);
+.venn-circle.venn-solid {
+  background-color: rgba(255, 255, 255, 0.12);
+}
+
+.venn-circle.venn-solid::before {
+  opacity: 0;
 }
 
 .venn-top {

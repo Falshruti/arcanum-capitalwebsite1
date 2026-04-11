@@ -39,21 +39,36 @@ export default function PostVennText() {
   const words = textContent.split(' ');
 
   return (
-    <section className="thesis-section container" ref={sectionRef}>
+    <section
+      className="thesis-section container"
+      ref={sectionRef}
+      style={{
+        height: '100vh',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
+        textAlign: 'center'
+      }}
+    >
       <div className="thesis-line-vertical"></div>
-      
+
       <div className="thesis-content" style={{ marginTop: '-1rem' }}>
         <p className="thesis-para" style={{ fontSize: '1.45rem', lineHeight: '1.6' }}>
           {words.map((word, wIdx) => {
-            const isBold = wIdx >= boldStart && wIdx < boldStart + boldLength;
-            const activationPoint = wIdx / words.length;
-            const isActive = scrollProgress >= activationPoint;
+            const isTarget = wIdx >= boldStart && wIdx < boldStart + boldLength;
+
+            let isActive = false;
+            if (isTarget) {
+              const targetWordIdx = wIdx - boldStart;
+              const activationPoint = (targetWordIdx + 1) / (boldLength + 1);
+              isActive = scrollProgress >= activationPoint;
+            }
 
             return (
               <span
                 key={wIdx}
-                className={`nav-word ${isActive ? 'active' : 'inactive'} ${isBold ? 'bold-word' : ''}`}
-                style={isBold ? { color: isActive ? '#fff' : '#64748b', fontWeight: '700' } : {}}
+                className={`nav-word ${isActive ? 'active' : 'inactive'}`}
               >
                 {word}{' '}
               </span>

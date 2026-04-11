@@ -6,7 +6,7 @@
   padding: 4rem 2rem;
   box-sizing: border-box;
   color: #fff;
-  font-family: 'Inter', system-ui, sans-serif;
+  font-family: 'Open Sans', system-ui, sans-serif;
 }
 
 .vision-container {
@@ -27,7 +27,7 @@
 
 .vision-heading .highlight {
   color: #fff;
-  font-weight: 600;
+  font-weight: 500;
 }
 
 /* ── Animated Split Divider Lines ── */
@@ -150,7 +150,7 @@
   /* Up-scaled for wider view */
   font-weight: 400;
   letter-spacing: 0.06em;
-  color: #ccd6f6;
+  color: #ffffff;
   margin-bottom: 2.8rem;
   text-transform: uppercase;
 }
@@ -161,17 +161,18 @@
 
 .info-title {
   display: block;
-  font-size: 0.75rem;
-  font-weight: 500;
+  font-size: 0.85rem;
+  font-weight: 400;
   letter-spacing: 0.1em;
-  color: #64748b;
+  color: #ffffff;
   margin-bottom: 1rem;
   text-transform: uppercase;
+  opacity: 0.65;
 }
 
 .info-text {
   font-size: 1rem;
-  color: #8892b0;
+  color: #ffffff;
   line-height: 1.6;
 }
 
@@ -191,15 +192,16 @@
 
 .meta-label {
   font-size: 0.75rem;
-  font-weight: 600;
+  font-weight: 400;
   letter-spacing: 0.12em;
-  color: #64748b;
+  color: #ffffff;
   text-transform: uppercase;
+  opacity: 0.65;
 }
 
 .meta-val {
   font-size: 1rem;
-  color: #ccd6f6;
+  color: #ffffff;
   white-space: nowrap;
 }
 
@@ -246,7 +248,7 @@
 
 /* Balanced column structure: 25% width for each of the 4 columns */
 .invest-table th {
-  font-size: 0.75rem;
+  font-size: 14px;
   font-weight: 500;
   letter-spacing: 0.12em;
   color: #64748b;
@@ -261,7 +263,8 @@
   width: 25%;
   padding: 2.2rem 1rem;
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  font-size: 0.95rem;
+  font-size: 15px;
+  font-weight: 500;
   vertical-align: middle;
   transition: background-color 0.2s ease, border-color 0.2s ease;
 }
@@ -274,11 +277,17 @@
 .invest-table th:last-child,
 .invest-table td:last-child {
   padding-right: 0;
-  text-align: right;
+}
+
+.invest-table tr {
+  transition: opacity 0.2s ease;
+}
+
+.invest-table tr:hover {
+  opacity: 0.6;
 }
 
 .invest-table tr:hover td {
-  background-color: rgba(255, 255, 255, 0.02);
   border-bottom-color: rgba(255, 255, 255, 0.15);
 }
 
@@ -297,6 +306,15 @@
   /* Ensure 1st column is consistent with logo height */
 }
 
+.table-logo {
+  height: 25px;
+  width: auto;
+  max-width: 100px;
+  object-fit: contain;
+  image-rendering: -webkit-optimize-contrast;
+  display: block;
+}
+
 .dot-logo {
   width: 12px;
   height: 12px;
@@ -312,12 +330,11 @@
 .sector-tag {
   display: inline-block;
   padding: 0.35rem 0.8rem;
-  background: rgba(255, 255, 255, 0.04);
   border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 4px;
-  font-size: 0.7rem;
+  border-radius: 25px;
+  font-size: 13px;
   font-weight: 600;
-  color: #ccd6f6;
+  color: #ffffff;
   text-transform: uppercase;
   letter-spacing: 0.08em;
   margin-left: 0.8rem;
