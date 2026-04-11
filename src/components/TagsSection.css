@@ -24,7 +24,9 @@
 }
 
 .ts-section {
-  padding: 0rem 0 2rem;
+  height: 100vh;
+  padding: 4rem 2rem;
+  box-sizing: border-box;
   /* NOTE: Do NOT add overflow:hidden here — it breaks position:sticky on rows */
 }
 
