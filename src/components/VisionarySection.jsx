@@ -16,12 +16,12 @@ const investments = [
 
 export default function VisionarySection() {
   return (
-    <section className="vision-section">
+    <section className="vision-section container">
       <div className="vision-container">
         {/* Main Heading — exact text from reference */}
         <h2 className="vision-heading">
-          Backing <span className="highlight">visionary</span> ideas that push<br />
-          technological boundaries.
+          Backing <span className="highlight">visionary</span> ideas that push
+          <p>technological boundaries.</p>
         </h2>
 
         {/* Top Split Divider */}

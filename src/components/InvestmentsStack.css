@@ -19,13 +19,11 @@
 .stack-header {
   margin-bottom: 3rem;
   text-align: left;
-  padding: 0rem 2rem;
 }
 
 @media (max-width: 768px) {
   .stack-header {
-    text-align: center;
-    padding: 0 1rem;
+    text-align: left;
   }
 }
 
@@ -51,7 +49,6 @@
 .stack-grid-container {
   max-width: 1400px;
   margin: 0 auto;
-  padding: 0 2rem;
 }
 
 .stack-grid {
@@ -215,5 +212,18 @@
 
   .stack-title {
     font-size: 2rem;
+  }
+
+  .investments-stack {
+    text-align: left;
+    padding: 4rem 2rem;
+    /* Keep mobile left aligned as previously requested */
+  }
+
+  .stack-footer {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-top: 3rem;
   }
 }

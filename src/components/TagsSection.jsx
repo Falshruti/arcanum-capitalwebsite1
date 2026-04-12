@@ -88,7 +88,7 @@ const rowVariants = {
 
 export default function TagsSection() {
   return (
-    <section className="ts-section">
+    <section className="ts-section container">
       <div className="ts-container">
 
         <div className="ts-stack">

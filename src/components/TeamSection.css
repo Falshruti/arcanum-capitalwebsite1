@@ -16,10 +16,11 @@
 
 @media (max-width: 900px) {
   .team-section {
-    padding: 4rem 1rem;
+    padding: 4rem 2rem;
   }
+
   .team-section .section-title {
-    text-align: center;
+    text-align: left;
   }
 }
 
@@ -39,7 +40,18 @@
 
 @media (max-width: 640px) {
   .team-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    row-gap: 3rem;
+  }
+
+  .avatar-placeholder {
+    width: 110px;
+    height: 110px;
+  }
+
+  .member-name {
+    font-size: 1.1rem;
   }
 }
 

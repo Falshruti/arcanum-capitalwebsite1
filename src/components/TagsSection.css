@@ -34,9 +34,8 @@
 }
 
 .ts-container {
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 1.5rem 2rem; /* Added vertical padding to prevent hover clip */
+  padding: 1rem 0rem;
+  /* Added vertical padding to prevent hover clip */
   /* overflow:clip allows clipping without creating a scroll context */
   overflow: clip;
 }
@@ -262,32 +261,94 @@
 
 /* ── Responsive ── */
 @media (max-width: 900px) {
+  .ts-section {
+    padding: 2rem 1rem;
+  }
+
+  .ts-stack {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* Central vertical dashed line */
+  .ts-stack::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 5%;
+    bottom: 5%;
+    width: 1px;
+    border-left: 1px dashed rgba(255, 255, 255, 0.3);
+    pointer-events: none;
+    z-index: 1;
+    transform: translateX(-50%);
+  }
 
   .ts-vline-global,
+  .ts-vseg,
   .ts-hline-wrap,
   .ts-bridge {
     display: none;
   }
 
   .ts-row {
-    margin-left: 0 !important;
-    margin-right: 0 !important;
+    margin: 0 0 4rem 0 !important;
+    width: 100%;
+    max-width: 320px;
+    justify-content: center;
     position: relative;
+  }
+
+  .ts-card {
+    flex-direction: column-reverse;
+    text-align: left;
+    padding: 1.8rem 1.5rem;
+    gap: 1.5rem;
+    width: 100%;
+    min-height: auto;
+    align-items: flex-start;
+  }
+
+  .ts-card--mini {
+    flex: 1;
   }
 
   .ts-dual {
     flex-direction: column;
-    gap: 1rem;
+    gap: 4rem;
+    width: 100%;
+    align-items: center;
+  }
+
+  .ts-dual-right {
+    width: 100%;
+  }
+
+  .ts-logos {
+    margin-left: 0;
+    justify-content: flex-start;
+    width: 100%;
+  }
+
+  .ts-card-label {
+    white-space: normal;
+    font-size: 1rem;
+    line-height: 1.4;
+    text-align: left;
     overflow: visible;
+    text-overflow: unset;
+    width: 100%;
   }
 
   .ts-enduser-center {
     width: 100%;
   }
 
-  .ts-card-label {
-    white-space: normal;
-    overflow: visible;
-    text-overflow: unset;
+  .ts-card--dark {
+    background: #2a3447;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    justify-content: flex-start;
+    padding: 1.5rem;
   }
 }

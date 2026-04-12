@@ -248,5 +248,5 @@ export default function NodeGlobe() {
     };
   }, []);
 
-  return <div ref={mountRef} style={{ width: '100%', height: '100vh', maxHeight: '550px' }} />;
+  return <div ref={mountRef} style={{ width: '100%', height: '100%' }} />;
 }

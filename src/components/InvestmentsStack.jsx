@@ -36,7 +36,7 @@ const stackItems = [
 
 export default function InvestmentsStack() {
   return (
-    <section className="investments-stack">
+    <section className="investments-stack container">
       <div className="stack-header">
         <h2 className="stack-title">
           We back the builders fine-tuning the<br />

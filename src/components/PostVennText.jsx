@@ -40,10 +40,9 @@ export default function PostVennText() {
 
   return (
     <section
-      className="thesis-section container"
+      className="thesis-section thesis-reduced-height container"
       ref={sectionRef}
       style={{
-        height: '100vh',
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',

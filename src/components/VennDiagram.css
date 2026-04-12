@@ -2,12 +2,13 @@
   padding: 0 0 8rem 0;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
 }
 
 .venn-header {
   max-width: 600px;
-  margin: 0 auto 5rem;
+  margin: 0 0 5rem 0;
+  text-align: left;
 }
 
 .venn-subtitle {
@@ -55,8 +56,13 @@
 }
 
 @keyframes spinSlow {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 .venn-circle.venn-solid {
@@ -133,21 +139,95 @@
   transform: translate(-50%, 50%);
 }
 
-@media (max-width: 600px) {
+@media (max-width: 900px) {
+  .venn-section {
+    padding: 2rem 0 6rem;
+  }
+
   .venn-container {
-    transform: scale(0.65);
-    margin: -60px auto;
-    /* Adjust margin to account for scaled down height */
+    width: 280px;
+    height: 600px;
+    margin: 0 auto;
+    position: relative;
   }
 
   .venn-circle {
-    font-size: 1.1rem;
+    width: 280px;
+    height: 280px;
+    left: 0 !important;
+    transform: none !important;
+    padding: 0 !important;
+    font-size: 1.15rem;
   }
-}
 
-@media (max-width: 400px) {
-  .venn-container {
-    transform: scale(0.55);
-    margin: -100px auto;
+  /* Vertical positioning with overlap */
+  .venn-top {
+    top: 0;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 5rem !important;
+    /* Move text up to allow space for intersection label */
+  }
+
+  .venn-left {
+    top: 160px;
+    /* Overlaps top circle */
+    bottom: auto;
+    justify-content: center;
+    align-items: center;
+    padding: 0 !important;
+    z-index: 5;
+    /* Ensure middle circle is more prominent */
+  }
+
+  .venn-right {
+    top: 320px;
+    /* Overlaps middle circle */
+    bottom: auto;
+    justify-content: center;
+    align-items: center;
+    padding-top: 5rem !important;
+    /* Move text down */
+  }
+
+  /* Specific border styles from image */
+  .venn-left.venn-solid {
+    background-color: rgba(255, 255, 255, 0.15);
+  }
+
+  /* Reset SVG background for smaller circles on mobile */
+  .venn-circle::before {
+    background-image: url("data:image/svg+xml,%3Csvg width='280' height='280' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='140' cy='140' r='139' fill='none' stroke='rgba(255, 255, 255, 0.4)' stroke-width='1' stroke-dasharray='6 10'/%3E%3C/svg%3E");
+  }
+
+  /* Interaction Mapping */
+  .venn-label {
+    width: 100%;
+    left: 0 !important;
+    right: auto !important;
+    transform: none !important;
+    font-size: 1rem;
+    color: #fff;
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .label-center,
+  .label-top-right {
+    display: none;
+    /* Hide center and OS Improvements on mobile */
+  }
+
+  .label-top-left {
+    /* Stablecoins */
+    top: 203px;
+    z-index: 10;
+  }
+
+  .label-bottom {
+    /* Agentic Payments */
+    top: 353px;
+    bottom: auto;
+    z-index: 10;
   }
 }

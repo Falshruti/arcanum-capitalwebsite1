@@ -38,11 +38,10 @@ export default function PostTagsText() {
 
   return (
     <section
-      className="thesis-section container"
+      className="thesis-section thesis-reduced-height container"
       ref={sectionRef}
       style={{
         padding: '2rem 0',
-        minHeight: '80vh',
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',

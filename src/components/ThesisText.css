@@ -61,6 +61,19 @@
   letter-spacing: -0.5px;
 }
 
+/* Reduced height variant for post-section transitions */
+.thesis-reduced-height {
+  height: 80vh !important;
+  min-height: 80vh !important;
+}
+
+@media (max-width: 900px) {
+  .thesis-reduced-height {
+    height: 60vh !important; /* Decreased for mobile as requested */
+    min-height: 60vh !important;
+  }
+}
+
 .nav-word {
   transition: color 0.15s ease-out;
 }

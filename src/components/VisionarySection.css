@@ -12,7 +12,6 @@
 .vision-container {
   max-width: 1400px;
   margin: 0 auto;
-  padding: 0 2rem;
 }
 
 /* ── Heading Styling ── */
@@ -26,7 +25,7 @@
 
 @media (max-width: 900px) {
   .vision-heading {
-    text-align: center;
+    text-align: left;
     font-size: 1.8rem;
     margin-bottom: 3rem;
   }
@@ -164,7 +163,7 @@
 
 @media (max-width: 900px) {
   .fund-label {
-    text-align: center;
+    text-align: left;
     margin-bottom: 2rem;
   }
 }
@@ -235,8 +234,8 @@
   transition: all 0.25s ease-in-out;
   backdrop-filter: blur(8px);
   box-shadow: 0 4px 15px rgba(255, 255, 255, 0.05);
-  width: fit-content;
-  margin: 0 auto;
+  width: auto;
+  margin: 0;
 }
 
 .inquire-btn:hover {
@@ -255,7 +254,7 @@
 .invest-table-container {
   margin-top: 5rem;
   overflow-x: auto;
-  cursor: pointer;
+  -webkit-overflow-scrolling: touch;
 }
 
 .invest-table {
@@ -263,6 +262,8 @@
   border-collapse: collapse;
   text-align: left;
   table-layout: auto;
+  min-width: 700px;
+  /* Ensure full table visibility via scroll */
 }
 
 /* Balanced column structure: 25% width for each of the 4 columns */
@@ -364,7 +365,7 @@
 /* ── Full Portfolio Button at Bottom ── */
 .portfolio-btn-wrap {
   display: flex;
-  justify-content: center;
+  justify-content: center; /* Desktop centering */
   margin-top: 2.5rem;
 }
 
@@ -406,11 +407,18 @@
   .invest-table td:nth-child(2),
   .invest-table th:nth-child(3),
   .invest-table td:nth-child(3) {
-    display: none;
-    /* Only show Name and Year on very small mobile for focus */
+    display: table-cell;
+    /* Restore visibility */
   }
 
-  .invest-table th, .invest-table td {
+  /* Reverted inquire button to left as requested */
+
+  .portfolio-btn-wrap {
+    justify-content: center;
+  }
+
+  .invest-table th,
+  .invest-table td {
     padding: 1.5rem 0.5rem;
   }
 }
@@ -419,7 +427,7 @@
   .vision-heading {
     font-size: 1.5rem;
   }
-  
+
   .brand-acronym {
     font-size: 2.5rem;
   }

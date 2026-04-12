@@ -67,6 +67,7 @@
   display: flex;
   justify-content: flex-end;
   align-items: center;
+  height: 550px; /* Base height for desktop */
 }
 
 .globe-placeholder {
@@ -75,24 +76,56 @@
   position: relative;
 }
 
-@media (max-width: 992px) {
-  .hero-inner {
-    flex-direction: column;
-    justify-content: center;
-    text-align: center;
-    gap: 3rem;
+@media (max-width: 900px) {
+  .hero {
+    padding-top: 7rem;
+    align-items: flex-start;
+    min-height: 100vh;
   }
 
-  .hero-logo-img {
-    margin: 0 auto 2rem;
+  .desktop-logo {
+    display: none;
+  }
+
+  .hero-inner {
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+    gap: 3rem;
+    width: 100%;
+  }
+
+  .hero-btn {
+    padding: 0.8rem 2.2rem;
+  }
+
+  .hero-content {
+    width: 100%;
+    z-index: 20;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
   }
 
   .hero-title {
-    font-size: 32px;
+    font-size: 30px;
+    padding-top: 15px;
+    line-height: 1.3;
+    margin-bottom: 2rem;
+  }
+
+  .hero-globe {
+    width: 100%;
+    height: 380px; /* Specific height for mobile */
+    display: flex;
+    justify-content: center;
+    position: relative;
+    margin-top: 2rem;
   }
 
   .globe-placeholder {
-    width: 320px;
-    height: 320px;
+    width: 380px;
+    height: 380px;
+    max-width: 100%;
   }
 }
