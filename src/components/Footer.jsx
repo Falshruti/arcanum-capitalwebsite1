@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './Footer.css';
 
 // Import highlight images from assets
@@ -41,12 +42,11 @@ export default function Footer() {
         <div className="brand-identity">
           <img src={footerLogo} alt="Arcanum Capital" className="footer-logo-img" />
           <nav className="footer-nav">
-            <a href="#home">Home</a>
-            <a href="#portfolio">Portfolio</a>
-            <a href="#team">Team</a>
-            <a href="#insights">Insights</a>
-            <a href="#nexus">Nexus</a>
-            <a href="#contact">Contact</a>
+            <Link to="/">Home</Link>
+            <Link to="/portfolio">Portfolio</Link>
+            <Link to="/#team">Team</Link>
+            <Link to="/#writings">Writings</Link>
+            <Link to="/#contact">Contact</Link>
           </nav>
         </div>
 

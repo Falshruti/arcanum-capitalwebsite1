@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './VisionarySection.css';
 import logo1 from '../assets/visiontablelogo/logo1.png';
 import logo2 from '../assets/visiontablelogo/logo2.png';
@@ -7,7 +8,7 @@ import logo4 from '../assets/visiontablelogo/logo4.png';
 import logo5 from '../assets/visiontablelogo/logo5.png';
 
 const investments = [
-  { name: 'HIFI', entry: 'Seed', invested: '2024', sector: 'Payment Rails', logo: logo1, width: '42px' },
+  { name: 'HIFI', entry: 'Seed', invested: '2024', sector: 'Payment Rails', logo: logo1 },
   { name: 'utexo', entry: 'Seed', invested: '2025', sector: 'Stablecoin Settlement', logo: logo2, width: '70px' },
   { name: 'Crosspoint', entry: 'Seed', invested: '2024', sector: 'Banking, Wallets & Custody', logo: logo3, width: '100px' },
   { name: 'Momentum', entry: 'Pre-Seed', invested: '2025', sector: 'Programmable Finance', logo: logo4, width: '100px' },
@@ -102,7 +103,6 @@ export default function VisionarySection() {
                           src={item.logo}
                           alt={item.name}
                           className="table-logo"
-                          style={{ width: item.width || 'auto' }}
                         />
                       ) : (
                         <div className="dot-logo"></div>
@@ -122,9 +122,9 @@ export default function VisionarySection() {
 
         {/* Full Portfolio Button */}
         <div className="portfolio-btn-wrap">
-          <button className="portfolio-btn">
+          <Link to="/portfolio" className="portfolio-btn">
             View Full Portfolio
-          </button>
+          </Link>
         </div>
 
 

@@ -1,24 +1,56 @@
 import React, { useState } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import './Navbar.css';
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const location = useLocation();
+
+  const isActive = (path) => location.pathname === path;
 
   return (
     <nav className="navbar">
       <div className="container navbar-inner">
         {/* Only visible on mobile */}
         <div className="navbar-mobile-brand">
-          <img src="/arcanum-logo.png" alt="Arcanum Capital" className="mobile-logo-img" />
+          <Link to="/">
+            <img src="/arcanum-logo.png" alt="Arcanum Capital" className="mobile-logo-img" />
+          </Link>
         </div>
         
         <div className={`nav-links ${isMenuOpen ? 'mobile-open' : ''}`}>
-          <a href="#home" className="active" onClick={() => setIsMenuOpen(false)}>Home</a>
-          <a href="#portfolio" onClick={() => setIsMenuOpen(false)}>Portfolio</a>
-          <a href="#team" onClick={() => setIsMenuOpen(false)}>Team</a>
-          <a href="#insights" onClick={() => setIsMenuOpen(false)}>Insights</a>
-          <a href="#nexus" onClick={() => setIsMenuOpen(false)}>Nexus</a>
-          <a href="#contact" onClick={() => setIsMenuOpen(false)}>Contact</a>
+          <Link 
+            to="/" 
+            className={isActive('/') ? 'active' : ''} 
+            onClick={() => setIsMenuOpen(false)}
+          >
+            Home
+          </Link>
+          <Link 
+            to="/portfolio" 
+            className={isActive('/portfolio') ? 'active' : ''} 
+            onClick={() => setIsMenuOpen(false)}
+          >
+            Portfolio
+          </Link>
+          <Link 
+            to="/#team" 
+            onClick={() => setIsMenuOpen(false)}
+          >
+            Team
+          </Link>
+          <Link 
+            to="/#writings" 
+            onClick={() => setIsMenuOpen(false)}
+          >
+            Writings
+          </Link>
+          <Link 
+            to="/#contact" 
+            onClick={() => setIsMenuOpen(false)}
+          >
+            Contact
+          </Link>
         </div>
 
         {/* Hamburger - only visible on mobile */}
