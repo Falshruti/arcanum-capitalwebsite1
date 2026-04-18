@@ -1,14 +1,20 @@
 .portfolio-page {
-  background-color: #0A1E37;
   color: #ffffff;
   min-height: 100vh;
+}
+
+.portfolio-hero-section {
+  background-image: url('/hero-bg.png');
+  background-size: cover;
+  background-position: top center;
+  background-repeat: no-repeat;
   padding-top: 15vh;
-  /* Space for navbar */
-  padding-bottom: 10vh;
+  padding-bottom: 5px;
 }
 
 .portfolio-container {
   max-width: 1400px;
+  margin: 0 auto;
 }
 
 .portfolio-header {
@@ -41,41 +47,80 @@
   transition: color 0.3s;
 }
 
-.filter-btn:hover {
-  color: #ffffff;
-}
-
+.filter-btn:hover,
 .filter-btn.active {
   color: #ffffff;
 }
 
-.portfolio-divider {
-  height: 1px;
-  background: rgba(255, 255, 255, 0.1);
+.portfolio-line {
   width: 100%;
-  margin-bottom: 4rem;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.05);
+  margin: 2rem 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.portfolio-line::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  width: 400px;
+  height: 100%;
+}
+
+.portfolio-line.top::before {
+  left: -400px;
+  background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 1) 100%);
+  animation: portfolio-scanRight 8.5s linear infinite;
+}
+
+.portfolio-line.bottom::before {
+  right: -400px;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 1) 0%, transparent 100%);
+  animation: portfolio-scanLeft 8.5s linear infinite;
+}
+
+@keyframes portfolio-scanRight {
+  0% {
+    left: -400px;
+  }
+
+  100% {
+    left: 100%;
+  }
+}
+
+@keyframes portfolio-scanLeft {
+  0% {
+    right: -400px;
+  }
+
+  100% {
+    right: 100%;
+  }
 }
 
 /* Portfolio Item Styles */
 .portfolio-item {
   display: flex;
-  gap: 7%;
-  /* Space between logos and content */
+  gap: 6rem;
   align-items: center;
-  margin-bottom: 8rem;
+  margin-bottom: 2rem;
 }
 
 .item-logos {
-  flex: 0 0 40%;
+  flex: 0 0 45%;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 .item-logo-sole {
-  max-width: 380px;
+  max-width: 100%;
   height: auto;
   object-fit: contain;
+  border-radius: 8px;
 }
 
 .item-content {
@@ -84,16 +129,18 @@
 
 .fund-name {
   font-family: 'Bellefair', serif;
-  font-size: 2.5rem;
+  font-size: 1.6rem;
   font-weight: 400;
-  margin-bottom: 2.5rem;
-  letter-spacing: 1px;
+  margin-bottom: 2.2rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #ffffff;
 }
 
 .item-details-grid {
   display: flex;
   flex-direction: column;
-  gap: 2.5rem;
+  gap: 2rem;
 }
 
 .detail-group label {
@@ -101,32 +148,54 @@
   font-size: 0.8rem;
   color: #64748b;
   letter-spacing: 1px;
-  margin-bottom: 0.8rem;
+  margin-bottom: 0.6rem;
+  text-transform: uppercase;
 }
 
 .detail-group p {
-  font-size: 1.1rem;
-  color: #e2e8f0;
+  font-size: 1.05rem;
+  color: #ffffff;
   margin: 0;
   max-width: 600px;
+  line-height: 1.6;
 }
 
 .stats-row {
   display: flex;
-  gap: 5rem;
+  gap: 4rem;
+  margin-top: 0.5rem;
 }
 
-.industry-tags {
+.action-area {
+  margin-top: 1.5rem;
+}
+
+.inquire-btn {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #ccd6f6;
+  padding: 1rem 3.5rem;
+  border-radius: 9999px;
+  font-size: 1rem;
   display: flex;
-  gap: 1rem;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.25s ease-in-out;
+  backdrop-filter: blur(8px);
+  width: 100%;
 }
 
-.tag {
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  padding: 0.4rem 1.25rem;
-  border-radius: 6px;
-  font-size: 0.9rem;
-  color: #f8fafc;
+.inquire-btn:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+  color: #fff;
+}
+
+.arrow-icon {
+  font-size: 1rem;
+  padding-left: 15px;
 }
 
 /* Responsive */
@@ -181,11 +250,13 @@
   align-items: center;
   color: #ffffff;
   font-size: 1rem;
-  transition: background-color 0.2s;
+  transition: opacity 0.3s, border-bottom-color 0.2s;
+  opacity: 1;
 }
 
 .table-row:hover {
-  background-color: rgba(255, 255, 255, 0.02);
+  opacity: 0.65;
+  border-bottom-color: rgba(255, 255, 255, 0.15);
 }
 
 .col-name {
@@ -196,7 +267,7 @@
 
 .name-icon,
 .name-icon-img {
-  height: 24px;
+  height: 18px;
   width: auto;
   object-fit: contain;
 }

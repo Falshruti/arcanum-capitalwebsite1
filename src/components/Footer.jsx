@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import './Footer.css';
 
 // Import highlight images from assets
@@ -11,32 +11,36 @@ import footerLogo from '../assets/footer/footer-logo.png';
 
 export default function Footer() {
   const highlights = [highlight1, highlight2, highlight3, highlight4, highlight1, highlight2];
+  const location = useLocation();
+  const hideNewsletter = ['/portfolio', '/insights', '/contact'].includes(location.pathname);
 
   return (
     <footer className="footer-section">
       <div className="footer-container">
-        {/* Top Section: Highlights + Subscribe */}
-        <div className="footer-top-grid">
-          <div className="social-highlights">
-            <div className="highlights-grid">
-              {highlights.map((src, idx) => (
-                <div key={idx} className="highlight-circle">
-                  <img src={src} alt={`Social ${idx + 1}`} />
-                </div>
-              ))}
+        {/* Top Section: Highlights + Subscribe - Hidden on Portfolio & Insights */}
+        {!hideNewsletter && (
+          <div className="footer-top-grid">
+            <div className="social-highlights">
+              <div className="highlights-grid">
+                {highlights.map((src, idx) => (
+                  <div key={idx} className="highlight-circle">
+                    <img src={src} alt={`Social ${idx + 1}`} />
+                  </div>
+                ))}
+              </div>
             </div>
-          </div>
 
-          <div className="subscribe-area">
-            <h2 className="subscribe-title">Subscribe <span className="thin">to our<br />newsletter.</span></h2>
-            <div className="subscribe-form">
-              <input type="email" placeholder="Email address" className="email-input" />
-              <button className="subscribe-pill">
-                Subscribe <span className="arrow">→</span>
-              </button>
+            <div className="subscribe-area">
+              <h2 className="subscribe-title">Subscribe <span className="thin">to our<br />newsletter.</span></h2>
+              <div className="subscribe-form">
+                <input type="email" placeholder="Email address" className="email-input" />
+                <button className="subscribe-pill">
+                  Subscribe <span className="arrow">→</span>
+                </button>
+              </div>
             </div>
           </div>
-        </div>
+        )}
 
         {/* Brand Identity: Logo + Nav */}
         <div className="brand-identity">
@@ -45,8 +49,9 @@ export default function Footer() {
             <Link to="/">Home</Link>
             <Link to="/portfolio">Portfolio</Link>
             <Link to="/#team">Team</Link>
-            <Link to="/#writings">Writings</Link>
-            <Link to="/#contact">Contact</Link>
+            <Link to="/insights">Insights</Link>
+            <Link to="/nexus">Nexus</Link>
+            <Link to="/contact">Contact</Link>
           </nav>
         </div>
 

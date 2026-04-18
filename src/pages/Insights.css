@@ -1,4 +1,4 @@
-.writings-page {
+.insights-page {
   background-color: #0A1E37;
   color: #ffffff;
   min-height: 100vh;
@@ -7,25 +7,25 @@
   font-family: 'Inter', sans-serif;
 }
 
-.writings-container {
+.insights-container {
   max-width: 1400px;
   margin: 0 auto;
 }
 
-.writings-header {
+.insights-header {
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
   margin-bottom: 4rem;
 }
 
-.writings-title {
+.insights-title {
   font-size: 40px;
   font-weight: 600;
   margin: 0;
 }
 
-.writings-filters {
+.insights-filters {
   display: flex;
   gap: 2rem;
 }
@@ -40,18 +40,19 @@
   transition: color 0.3s;
 }
 
-.filter-btn:hover, .filter-btn.active {
+.filter-btn:hover,
+.filter-btn.active {
   color: #ffffff;
 }
 
 /* Grid Design */
-.writings-grid {
+.insights-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.writing-card {
+.insight-card {
   padding: 2rem 2rem;
   border: 1px solid rgba(255, 255, 255, 0.1);
   display: flex;
@@ -63,7 +64,7 @@
   overflow: hidden;
 }
 
-.writing-card::before {
+.insight-card::before {
   content: '';
   position: absolute;
   top: 0;
@@ -76,7 +77,7 @@
   z-index: 0;
 }
 
-.writing-card:hover::before {
+.insight-card:hover::before {
   opacity: 1;
   background:
     /* Horizontal Dividers between bands */
@@ -88,7 +89,7 @@
     /* Five Rows of Gradients creating the 'plus' mask */
     linear-gradient(to right, rgba(160, 180, 255, 0.08) 0%, rgba(255, 255, 255, 0.12) 25%, transparent 35%, transparent 65%, rgba(255, 255, 255, 0.12) 75%, rgba(160, 180, 255, 0.08) 100%) 0% 0% / 100% 20% no-repeat,
     linear-gradient(to right, rgba(160, 180, 255, 0.08) 0%, rgba(255, 255, 255, 0.1) 20%, transparent 30%, transparent 70%, rgba(255, 255, 255, 0.1) 80%, rgba(160, 180, 255, 0.08) 100%) 0% 25% / 100% 20% no-repeat,
-    linear-gradient(to right, rgba(160, 180, 255, 0.08) 0%, rgba(255, 255, 255, 0.08) 15%, transparent 25%, transparent 75%, rgba(255, 255, 255, 0.08) 85%, rgba(160, 180, 255, 0.08) 100%) 0% 50% / 100% 20% no-repeat,
+    linear-gradient(to right, rgba(160, 180, 255, 0.08) 0%, rgba(255, 255, 255, 0.08) 15%, transparent 35%, transparent 65%, rgba(255, 255, 255, 0.08) 85%, rgba(160, 180, 255, 0.08) 100%) 0% 50% / 100% 20% no-repeat,
     linear-gradient(to right, rgba(160, 180, 255, 0.08) 0%, rgba(255, 255, 255, 0.1) 20%, transparent 30%, transparent 70%, rgba(255, 255, 255, 0.1) 80%, rgba(160, 180, 255, 0.08) 100%) 0% 75% / 100% 20% no-repeat,
     linear-gradient(to right, rgba(160, 180, 255, 0.08) 0%, rgba(255, 255, 255, 0.12) 25%, transparent 35%, transparent 65%, rgba(255, 255, 255, 0.12) 75%, rgba(160, 180, 255, 0.08) 100%) 0% 100% / 100% 20% no-repeat,
     #050810;
@@ -123,7 +124,7 @@
   display: inline-block;
   padding: 0.5rem 1.5rem;
   border: 1px solid rgba(255, 255, 255, 0.3);
-  border-radius: 6px;
+  border-radius: 25px;
   font-size: 0.85rem;
   color: #ffffff;
   text-transform: uppercase;
@@ -132,23 +133,23 @@
 
 /* Responsive */
 @media (max-width: 1024px) {
-  .writings-grid {
+  .insights-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
 @media (max-width: 768px) {
-  .writings-header {
+  .insights-header {
     flex-direction: column;
     align-items: flex-start;
     gap: 2rem;
   }
-  
-  .writings-grid {
+
+  .insights-grid {
     grid-template-columns: 1fr;
   }
-  
-  .writing-card {
+
+  .insight-card {
     min-height: auto;
   }
 }

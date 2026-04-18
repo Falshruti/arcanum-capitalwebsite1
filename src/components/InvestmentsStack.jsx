@@ -60,7 +60,7 @@ export default function InvestmentsStack() {
       </div>
 
       <div className="stack-footer">
-        <Link to="/writings" className="view-all-btn">View All Insights</Link>
+        <Link to="/insights" className="view-all-btn">View All Insights</Link>
       </div>
     </section>
   );

@@ -234,7 +234,7 @@
   transition: all 0.25s ease-in-out;
   backdrop-filter: blur(8px);
   box-shadow: 0 4px 15px rgba(255, 255, 255, 0.05);
-  width: auto;
+  width: 100%;
   margin: 0;
 }
 

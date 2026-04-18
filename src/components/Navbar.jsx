@@ -17,38 +17,45 @@ export default function Navbar() {
             <img src="/arcanum-logo.png" alt="Arcanum Capital" className="mobile-logo-img" />
           </Link>
         </div>
-        
+
         <div className={`nav-links ${isMenuOpen ? 'mobile-open' : ''}`}>
-          <Link 
-            to="/" 
-            className={isActive('/') ? 'active' : ''} 
+          <Link
+            to="/"
+            className={isActive('/') ? 'active' : ''}
             onClick={() => setIsMenuOpen(false)}
           >
             Home
           </Link>
-          <Link 
-            to="/portfolio" 
-            className={isActive('/portfolio') ? 'active' : ''} 
+          <Link
+            to="/portfolio"
+            className={isActive('/portfolio') ? 'active' : ''}
             onClick={() => setIsMenuOpen(false)}
           >
             Portfolio
           </Link>
-          <Link 
-            to="/#team" 
+          <Link
+            to="/#team"
             onClick={() => setIsMenuOpen(false)}
           >
             Team
           </Link>
-          <Link 
-            to="/writings" 
-            className={isActive('/writings') ? 'active' : ''} 
+          <Link
+            to="/insights"
+            className={isActive('/insights') ? 'active' : ''}
             onClick={() => setIsMenuOpen(false)}
           >
-            Writings
+            Insights
           </Link>
-          <Link 
-            to="/contact" 
-            className={isActive('/contact') ? 'active' : ''} 
+          <Link
+            to="/nexus"
+            className={isActive('/nexus') ? 'active' : ''}
+            onClick={() => setIsMenuOpen(false)}
+          >
+            Nexus
+          </Link>
+          <Link
+            to="/contact"
+            className={isActive('/contact') ? 'active' : ''}
             onClick={() => setIsMenuOpen(false)}
           >
             Contact
@@ -56,8 +63,8 @@ export default function Navbar() {
         </div>
 
         {/* Hamburger - only visible on mobile */}
-        <button 
-          className="hamburger" 
+        <button
+          className="hamburger"
           onClick={() => setIsMenuOpen(!isMenuOpen)}
           aria-label="Toggle menu"
         >
