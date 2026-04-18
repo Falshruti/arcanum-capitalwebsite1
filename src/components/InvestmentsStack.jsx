@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './InvestmentsStack.css';
 
 const stackItems = [
@@ -59,7 +60,7 @@ export default function InvestmentsStack() {
       </div>
 
       <div className="stack-footer">
-        <button className="view-all-btn">View All Insights</button>
+        <Link to="/writings" className="view-all-btn">View All Insights</Link>
       </div>
     </section>
   );

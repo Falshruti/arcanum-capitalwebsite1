@@ -1,0 +1,154 @@
+.writings-page {
+  background-color: #0A1E37;
+  color: #ffffff;
+  min-height: 100vh;
+  padding-top: 15vh;
+  padding-bottom: 10vh;
+  font-family: 'Inter', sans-serif;
+}
+
+.writings-container {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.writings-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 4rem;
+}
+
+.writings-title {
+  font-size: 40px;
+  font-weight: 600;
+  margin: 0;
+}
+
+.writings-filters {
+  display: flex;
+  gap: 2rem;
+}
+
+.filter-btn {
+  background: none;
+  border: none;
+  color: #94a3b8;
+  font-size: 1.1rem;
+  cursor: pointer;
+  padding: 0;
+  transition: color 0.3s;
+}
+
+.filter-btn:hover, .filter-btn.active {
+  color: #ffffff;
+}
+
+/* Grid Design */
+.writings-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.writing-card {
+  padding: 2rem 2rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 290px;
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.writing-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #000;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  z-index: 0;
+}
+
+.writing-card:hover::before {
+  opacity: 1;
+  background:
+    /* Horizontal Dividers between bands */
+    linear-gradient(to bottom,
+      transparent 19%, rgba(255, 255, 255, 0.05) 19.5%, transparent 20%,
+      transparent 39%, rgba(255, 255, 255, 0.05) 39.5%, transparent 40%,
+      transparent 59%, rgba(255, 255, 255, 0.05) 59.5%, transparent 60%,
+      transparent 79%, rgba(255, 255, 255, 0.05) 79.5%, transparent 80%),
+    /* Five Rows of Gradients creating the 'plus' mask */
+    linear-gradient(to right, rgba(160, 180, 255, 0.08) 0%, rgba(255, 255, 255, 0.12) 25%, transparent 35%, transparent 65%, rgba(255, 255, 255, 0.12) 75%, rgba(160, 180, 255, 0.08) 100%) 0% 0% / 100% 20% no-repeat,
+    linear-gradient(to right, rgba(160, 180, 255, 0.08) 0%, rgba(255, 255, 255, 0.1) 20%, transparent 30%, transparent 70%, rgba(255, 255, 255, 0.1) 80%, rgba(160, 180, 255, 0.08) 100%) 0% 25% / 100% 20% no-repeat,
+    linear-gradient(to right, rgba(160, 180, 255, 0.08) 0%, rgba(255, 255, 255, 0.08) 15%, transparent 25%, transparent 75%, rgba(255, 255, 255, 0.08) 85%, rgba(160, 180, 255, 0.08) 100%) 0% 50% / 100% 20% no-repeat,
+    linear-gradient(to right, rgba(160, 180, 255, 0.08) 0%, rgba(255, 255, 255, 0.1) 20%, transparent 30%, transparent 70%, rgba(255, 255, 255, 0.1) 80%, rgba(160, 180, 255, 0.08) 100%) 0% 75% / 100% 20% no-repeat,
+    linear-gradient(to right, rgba(160, 180, 255, 0.08) 0%, rgba(255, 255, 255, 0.12) 25%, transparent 35%, transparent 65%, rgba(255, 255, 255, 0.12) 75%, rgba(160, 180, 255, 0.08) 100%) 0% 100% / 100% 20% no-repeat,
+    #050810;
+}
+
+.card-title {
+  font-size: 1.45rem;
+  font-weight: 600;
+  line-height: 1.4;
+  margin-bottom: 1.5rem;
+  color: #ffffff;
+  position: relative;
+  z-index: 2;
+}
+
+.card-desc {
+  font-size: 1rem;
+  color: #94a3b8;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+  position: relative;
+  z-index: 2;
+}
+
+.card-footer {
+  margin-top: auto;
+  position: relative;
+  z-index: 2;
+}
+
+.pill-tag {
+  display: inline-block;
+  padding: 0.5rem 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 6px;
+  font-size: 0.85rem;
+  color: #ffffff;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .writings-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .writings-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2rem;
+  }
+  
+  .writings-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .writing-card {
+    min-height: auto;
+  }
+}

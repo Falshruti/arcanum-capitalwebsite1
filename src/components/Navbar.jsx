@@ -40,7 +40,8 @@ export default function Navbar() {
             Team
           </Link>
           <Link 
-            to="/#writings" 
+            to="/writings" 
+            className={isActive('/writings') ? 'active' : ''} 
             onClick={() => setIsMenuOpen(false)}
           >
             Writings
