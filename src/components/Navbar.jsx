@@ -47,7 +47,8 @@ export default function Navbar() {
             Writings
           </Link>
           <Link 
-            to="/#contact" 
+            to="/contact" 
+            className={isActive('/contact') ? 'active' : ''} 
             onClick={() => setIsMenuOpen(false)}
           >
             Contact
