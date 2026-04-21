@@ -208,12 +208,42 @@ export default function Nexus() {
                     animate={{ height: 'auto', opacity: 1 }}
                     exit={{ height: 0, opacity: 0 }}
                   >
-                    {/* Simplified mobile filter view */}
-                    <div className="filter-group">
-                      <label>Sectors</label>
-                      <select className="nexus-select">
-                        {sectors.map(s => <option key={s}>{s}</option>)}
-                      </select>
+                    <div className="filter-box">
+                      <h3 className="filter-label">Profile Sectors</h3>
+                      <div className="filter-options">
+                        {sectors.map(sector => (
+                          <label key={sector} className="checkbox-container">
+                            <input 
+                              type="checkbox" 
+                              checked={selectedSectors.includes(sector)}
+                              onChange={() => toggleSector(sector)}
+                            />
+                            <span className="checkmark"></span>
+                            {sector}
+                          </label>
+                        ))}
+                        <label className="checkbox-container"><input type="checkbox" /><span className="checkmark"></span>Finance</label>
+                        <label className="checkbox-container"><input type="checkbox" /><span className="checkmark"></span>Finance</label>
+                        <label className="checkbox-container"><input type="checkbox" /><span className="checkmark"></span>Finance</label>
+                      </div>
+
+                      <div className="dropdown-filters">
+                        <div className="filter-group">
+                          <label>Country</label>
+                          <select className="nexus-select">
+                            <option>All countries</option>
+                            {countries.map(country => (
+                              <option key={country} value={country}>{country}</option>
+                            ))}
+                          </select>
+                        </div>
+                        <div className="filter-group">
+                          <label>Sort By</label>
+                          <select className="nexus-select">
+                            <option>Relevance</option>
+                          </select>
+                        </div>
+                      </div>
                     </div>
                   </motion.div>
                 )}
