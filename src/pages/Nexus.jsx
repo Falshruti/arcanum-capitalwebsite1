@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import './Nexus.css';
 
@@ -107,9 +108,9 @@ export default function Nexus() {
             <h1 className="nexus-main-title">
               Discover <span className="highlight-text">stablecoin-powered companies</span> around the world.
             </h1>
-            <a href="/submit-profile" className="submit-profile-link">
+            <Link to="/submit-profile" className="submit-profile-link">
               Are you a business? Submit your profile <span className="arrow">→</span>
-            </a>
+            </Link>
 
             <div className="search-container">
               <div className="search-bar-wrapper">
