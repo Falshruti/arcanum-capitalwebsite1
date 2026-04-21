@@ -107,7 +107,7 @@ export default function Nexus() {
             <h1 className="nexus-main-title">
               Discover <span className="highlight-text">stablecoin-powered companies</span> around the world.
             </h1>
-            <a href="/contact" className="submit-profile-link">
+            <a href="/submit-profile" className="submit-profile-link">
               Are you a business? Submit your profile <span className="arrow">→</span>
             </a>
 

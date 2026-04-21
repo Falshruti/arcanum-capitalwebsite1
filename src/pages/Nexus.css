@@ -1,5 +1,4 @@
 .nexus-page {
-  background-color: #011222;
   color: #ffffff;
   min-height: 100vh;
   font-family: 'Inter', sans-serif;
@@ -20,7 +19,7 @@
   height: 200%;
   pointer-events: none;
   z-index: 0;
-  background-image: 
+  background-image:
     linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
     linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
   background-size: 60px 60px;
@@ -58,6 +57,7 @@
   gap: 8px;
   margin-bottom: 3rem;
   transition: opacity 0.3s;
+  cursor: pointer;
 }
 
 .submit-profile-link:hover {
@@ -505,7 +505,7 @@
   .nexus-main-title {
     font-size: 2rem;
   }
-  
+
   .company-card {
     padding: 1.5rem;
   }

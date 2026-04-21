@@ -1,0 +1,159 @@
+.submit-profile-page {
+  min-height: 100vh;
+  padding: 18vh 0 10vh;
+  position: relative;
+  overflow: hidden;
+  color: #011222;
+  /* Dark navy for form content */
+}
+
+.nexus-grid-bg {
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  pointer-events: none;
+  z-index: 0;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 60px 60px;
+  transform: rotate(45deg);
+  mask-image: radial-gradient(circle at center, black, transparent 70%);
+}
+
+.sp-form-card {
+  position: relative;
+  z-index: 1;
+  background: #ffffff;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 4rem;
+  border-radius: 30px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+.sp-form-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.sp-form-title {
+  font-size: 2.8rem;
+  font-weight: 600;
+  color: #011222;
+  margin-bottom: 1rem;
+}
+
+.sp-form-subtitle {
+  color: #64748b;
+  font-size: 1.2rem;
+}
+
+.sp-profile-form {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.sp-form-row {
+  width: 100%;
+}
+
+.sp-dual-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+.sp-form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.sp-form-group label {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #011222;
+}
+
+.sp-form-group input,
+.sp-form-group textarea,
+.sp-form-group select {
+  width: 100%;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 1rem;
+  font-size: 1rem;
+  color: #011222;
+  transition: border-color 0.3s;
+}
+
+.sp-form-group input:focus,
+.sp-form-group textarea:focus,
+.sp-form-group select:focus {
+  outline: none;
+  border-color: #011222;
+}
+
+.sp-form-group textarea {
+  resize: vertical;
+}
+
+.sp-form-select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23011222' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  padding-right: 2.5rem !important;
+}
+
+.sp-form-submit-btn {
+  background: #011222;
+  color: #ffffff;
+  border: none;
+  border-radius: 9999px;
+  padding: 1.2rem 3rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.3s;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin: 1rem auto 0;
+  width: fit-content;
+  min-width: -webkit-fill-available;
+}
+
+.sp-form-submit-btn:hover {
+  opacity: 0.9;
+}
+
+.sp-form-submit-btn .arrow {
+  font-size: 1.2rem;
+}
+
+@media (max-width: 768px) {
+  .sp-form-card {
+    padding: 2.5rem 1.5rem;
+    border-radius: 20px;
+  }
+
+  .sp-form-title {
+    font-size: 2rem;
+  }
+
+  .sp-dual-row {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .sp-form-submit-btn {
+    width: 100%;
+  }
+}

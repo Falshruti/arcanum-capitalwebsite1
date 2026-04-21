@@ -7,6 +7,7 @@ import Portfolio from './pages/Portfolio';
 import Insights from './pages/Insights';
 import Contact from './pages/Contact';
 import Nexus from './pages/Nexus';
+import SubmitProfile from './pages/SubmitProfile';
 import ScrollToTop from './components/ScrollToTop';
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
         <Route path="/insights" element={<Insights />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/nexus" element={<Nexus />} />
+        <Route path="/submit-profile" element={<SubmitProfile />} />
       </Routes>
       <Footer />
     </>

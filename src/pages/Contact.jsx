@@ -90,19 +90,19 @@ export default function Contact() {
           <div className="contact-form-wrapper">
             {status.submitted ? (
               <motion.div
-                className="success-message"
+                className="contact-success-message"
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
               >
                 <h3>Thank you!</h3>
                 <p>Your message has been sent successfully. We will get back to you shortly.</p>
-                <button className="submit-btn" onClick={() => setStatus({ ...status, submitted: false })}>
+                <button className="contact-submit-btn" onClick={() => setStatus({ ...status, submitted: false })}>
                   Send another message
                 </button>
               </motion.div>
             ) : (
               <form className="contact-form" onSubmit={handleSubmit}>
-                <div className="form-group">
+                <div className="contact-form-group">
                   <label>NAME</label>
                   <input
                     type="text"
@@ -113,7 +113,7 @@ export default function Contact() {
                   />
                 </div>
 
-                <div className="form-group">
+                <div className="contact-form-group">
                   <label>EMAIL</label>
                   <input
                     type="email"
@@ -124,7 +124,7 @@ export default function Contact() {
                   />
                 </div>
 
-                <div className="form-group">
+                <div className="contact-form-group">
                   <label>TELEGRAM</label>
                   <input
                     type="text"
@@ -134,7 +134,7 @@ export default function Contact() {
                   />
                 </div>
 
-                <div className="form-group">
+                <div className="contact-form-group">
                   <label>COMAPANY</label>
                   <input
                     type="text"
@@ -144,7 +144,7 @@ export default function Contact() {
                   />
                 </div>
 
-                <div className="form-group">
+                <div className="contact-form-group">
                   <label>TOPIC OF INTEREST</label>
                   <textarea
                     name="links"
@@ -154,7 +154,7 @@ export default function Contact() {
                   ></textarea>
                 </div>
 
-                <div className="form-group">
+                <div className="contact-form-group">
                   <label>MESSAGE</label>
                   <textarea
                     name="message"
@@ -165,9 +165,9 @@ export default function Contact() {
                   ></textarea>
                 </div>
 
-                {status.error && <p className="error-message">{status.error}</p>}
+                {status.error && <p className="contact-error-message">{status.error}</p>}
 
-                <button type="submit" className="submit-btn" disabled={status.submitting}>
+                <button type="submit" className="contact-submit-btn" disabled={status.submitting}>
                   {status.submitting ? 'Sending...' : 'Submit'}
                   <span className="arrow-icon">→</span>
                 </button>

@@ -47,21 +47,21 @@
   gap: 1.5rem;
 }
 
-.form-group {
+.contact-form-group {
   display: flex;
   flex-direction: column;
   gap: 0.6rem;
 }
 
-.form-group label {
+.contact-form-group label {
   font-size: 0.85rem;
   color: #ffffff;
   opacity: 0.65;
   font-weight: 500;
 }
 
-.form-group input,
-.form-group textarea {
+.contact-form-group input,
+.contact-form-group textarea {
   background: #ffffff;
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 6px;
@@ -72,14 +72,14 @@
   transition: border-color 0.3s, box-shadow 0.3s;
 }
 
-.form-group input:focus,
-.form-group textarea:focus {
+.contact-form-group input:focus,
+.contact-form-group textarea:focus {
   outline: none;
   border-color: rgba(255, 255, 255, 0.3);
   box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.05);
 }
 
-.submit-btn {
+.contact-submit-btn {
   margin-top: 1rem;
   background: rgba(255, 255, 255, 0.2);
   color: #ffffff;
@@ -101,19 +101,19 @@
   padding-left: 15px;
 }
 
-.submit-btn:hover:not(:disabled) {
+.contact-submit-btn:hover:not(:disabled) {
   background: rgba(255, 255, 255, 0.3);
   border-color: rgba(255, 255, 255, 0.2);
   transform: translateY(-2px);
 }
 
-.submit-btn:disabled {
+.contact-submit-btn:disabled {
   opacity: 0.6;
   cursor: not-allowed;
   transform: none;
 }
 
-.success-message {
+.contact-success-message {
   text-align: center;
   padding: 3rem 2rem;
   background: rgba(255, 255, 255, 0.03);
@@ -121,17 +121,17 @@
   border-radius: 8px;
 }
 
-.success-message h3 {
+.contact-success-message h3 {
   font-size: 2rem;
   margin-bottom: 1rem;
 }
 
-.success-message p {
+.contact-success-message p {
   color: #94a3b8;
   margin-bottom: 2rem;
 }
 
-.error-message {
+.contact-error-message {
   color: #ef4444;
   font-size: 0.9rem;
   margin-bottom: 1rem;

@@ -12,7 +12,7 @@ import footerLogo from '../assets/footer/footer-logo.png';
 export default function Footer() {
   const highlights = [highlight1, highlight2, highlight3, highlight4, highlight1, highlight2];
   const location = useLocation();
-  const hideNewsletter = ['/portfolio', '/insights', '/contact', '/nexus'].includes(location.pathname);
+  const hideNewsletter = ['/portfolio', '/insights', '/contact', '/nexus', '/submit-profile'].includes(location.pathname);
 
   return (
     <footer className="footer-section">
