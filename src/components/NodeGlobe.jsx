@@ -7,7 +7,7 @@ const CONFIG = {
   dotColor:      0xCCD1D9,   // continent dots (light gray, cool tint)
   starColor:     0xFFFFFF,   // starfield
 
-  // Arc palette
+  // Arc palette — a random color is picked per transaction.
   arcColors: [
     0xFFFFFF,
     0xFFFFFF,
@@ -16,70 +16,75 @@ const CONFIG = {
 
   // ---------- GLOBE ----------
   radius:        1.6,
-  rotationSpeed: 0.06,
+  rotationSpeed: 0.06,       // radians/sec (frame-rate independent)
   dotSize:       0.026,
   dotOpacity:    0.95,
 
-  dotDimFrac:     0.45,
-  dotMidFrac:     0.37,
-  dotBrightFrac:  0.18,
+  // Starlight distribution across continent dots
+  dotDimFrac:     0.45,      // 45% of dots are dim
+  dotMidFrac:     0.37,      // 37% are medium
+  dotBrightFrac:  0.18,      // 18% are bright "hero" points
   dotDimOpacity:    0.85,
   dotMidOpacity:    1.00,
   dotBrightOpacity: 1.00,
-  dotDimSize:       1.0,
+  dotDimSize:       1.0,     // size multipliers on dotSize
   dotMidSize:       1.15,
   dotBrightSize:    1.35,
 
   // ---------- GRATICULE (lat/lon grid) ----------
   graticuleColor:   0x0F294A,
-  graticuleOpacity: 1.0,
-  graticuleStep:    15,
-  graticuleRadius:  0.985,
-  graticuleSegments: 96,
+  graticuleOpacity: 1.0,     // line material already dark; tune if needed
+  graticuleStep:    15,      // spacing in degrees between lines
+  graticuleRadius:  0.985,   // slightly inside the dot sphere (× radius)
+  graticuleSegments: 96,     // points per ring (higher = smoother curves)
 
   // ---------- STARFIELD (subtle) ----------
-  starCount:     450,
+  starCount:     450,        // total stars (kept low for subtlety)
   starSize:      0.014,
-  starMinOpacity: 0.15,
-  starMaxOpacity: 0.55,
+  starMinOpacity: 0.15,      // far stars
+  starMaxOpacity: 0.55,      // near stars
 
   // ---------- TRANSACTIONS ----------
-  maxActive:     6,
-  spawnEveryMin: 0.77,
-  spawnEveryMax: 1.86,
+  maxActive:     6,          // cap simultaneous arcs in flight
+  spawnEveryMin: 1.10,       // seconds — min gap between spawns
+  spawnEveryMax: 2.66,       // seconds — max gap
 
-  arcLift:       0.75,
-  endpointLift:  1.012,
-  arcSweepDur:   2.1,
-  arcHoldDur:    2.4,
-  arcFadeDur:    1.0,
+  arcLift:       0.225,      // how high the arc bulges above surface
+  endpointLift:  1.012,       // endpoints sit at radius * this (dots, arc tips, pulses all aligned)
+  farSideDim:    0.18,        // brightness multiplier for endpoints on the back of the globe
+  arcSweepDur:   2.1,        // seconds for head to travel end-to-end
+  arcHoldDur:    1.5,        // arc stays bright while destination pulse plays out (matches pulseDur)
+  arcFadeDur:    1.5,        // slow ~1.5s fade-out begins after the pulse has resolved
 
-  arcSegments:   220,
-  arcTailFrac:   0.3,
-  arcLineOpacity: 0.95,
-  arcPersistOpacity: 0.45,
+  arcSegments:   220,        // curve sample count (higher = silkier head motion)
+  arcTailFrac:   0.3,        // comet tail length as fraction of arc
+  arcLineOpacity: 0.95,      // peak arc brightness
+  arcPersistOpacity: 0.45,   // arc brightness after landing
 
-  pulseMaxScale: 9,
-  pulseDur:      1.9,
-  pulseBaseInner: 0.040,
-  pulseBaseOuter: 0.052,
-  pulseOpacity:   1.0,
+  pulseMaxScale: 9.75,        // pulse rings grow to this * base ring size
+  pulseDur:      1.4,         // seconds for a pulse to expand + fade (must finish before arcFade)
+  pulseBaseInner: 0.028,      // ring inner radius
+  pulseBaseOuter: 0.064,      // ring outer radius (thicker = more visible)
+  pulseOpacity:   1.0,        // peak opacity at spawn
 
-  dotMarkerSize: 0.035,
-  dotHaloScale:  2.4,
-  dotHaloOpacity: 0.28,
+  dotMarkerSize: 0.028,       // endpoint dot core radius
+  dotHaloScale:  2.0,         // halo size relative to core (0 = no halo)
+  dotHaloOpacity: 0.28,       // halo opacity (resting)
 
-  dotStartFadeDur: 0.4,
+  // Start dot — gentle fade-in, no overshoot.
+  dotStartFadeDur: 0.4,       // seconds to fade the origin dot in
 
-  dotLiveBreathHz:    1.4,
-  dotLiveBreathScale: 0.05,
-  dotLiveBreathGlow:  0.10,
+  // Live-transaction breath
+  dotLiveBreathHz:    1.4,     // breath frequency in Hz
+  dotLiveBreathScale: 0.05,    // scale amplitude (±5% around resting)
+  dotLiveBreathGlow:  0.10,    // halo opacity amplitude (±10% around resting)
 
-  dotDestPopDur:   0.35,
-  dotDestFlashDur: 0.5,
-  dotDestFlashPeak: 1.6,
-  dotDestHaloBloomDur: 0.9,
-  dotDestHaloBloomScale: 1.5,
+  // Destination dot — "lands" with a snap + flash at arrival.
+  dotDestPopDur:   0.35,      // pop-in duration (uses easeOutBack for overshoot)
+  dotDestFlashDur: 0.5,       // flash brightness duration
+  dotDestFlashPeak: 1.6,      // flash core opacity multiplier at peak
+  dotDestHaloBloomDur: 0.9,   // halo one-shot expansion duration
+  dotDestHaloBloomScale: 1.5, // halo briefly expands to this × resting scale
 };
 
 const easeOutCubic  = t => 1 - Math.pow(1 - t, 3);
@@ -91,28 +96,50 @@ const easeOutBack   = t => {
 };
 
 const LAND_RECTS = [
+  // NORTH AMERICA
   [49, 71, -168, -141], [60, 72, -141,  -95], [49, 60, -130,  -95],
   [42, 60, -123,  -75], [30, 49, -123,  -72], [25, 42, -106,  -80],
   [25, 35, -118,  -95], [25, 32, -100,  -80], [15, 25, -106,  -85],
   [ 7, 20,  -92,  -77], [ 8, 18,  -85,  -77], [60, 78,  -95,  -60],
   [70, 80, -110,  -70], [50, 70,  -95,  -55], [45, 55,  -80,  -55],
+
+  // GREENLAND
   [60, 83,  -55,  -15],
+
+  // SOUTH AMERICA
   [ 5, 12,  -77,  -60], [-5, 10,  -80,  -50], [-20,  5,  -80,  -35],
   [-35, -20, -75, -40], [-55, -35, -75, -53], [-35, -20, -65, -50],
+
+  // EUROPE
   [36, 44,  -10,   45], [44, 55,  -10,   40], [55, 70,    5,   40],
   [55, 71,   10,   60], [36, 47,   12,   42], [35, 43,   20,   45],
+
+  // AFRICA
   [15, 37,  -17,   35], [ 0, 15,  -17,   50], [-20,  0,   10,   50],
   [-35, -20, 12,   40], [-35, -25, 15,   32],
+
+  // MIDDLE EAST
   [12, 32,   34,   60], [22, 40,   40,   65], [25, 45,   45,   75],
   [30, 50,   50,   80],
+
+  // ASIA — Russia
   [50, 77,   25,  180], [55, 77,   60,  180],
+  // Asia — central mainland
   [35, 55,   60,  140], [30, 50,   73,  135], [25, 45,   75,  125],
+  // Indian subcontinent
   [ 8, 35,   68,   97], [20, 35,   70,   90], [10, 30,   72,   90],
+  // Southeast Asia mainland
   [ 5, 25,   90,  108], [ 0, 15,   95,  115],
+  // Japan, Korea, Taiwan
   [30, 45,  128,  146], [22, 26,  120,  122], [33, 39,  125,  130],
+  // SE Asia islands
   [ 5, 20,  115,  127], [-10,  6,  95,  141], [-11, -6,  105, 150],
   [-5,  8,  110,  125], [-4,  7,  120,  135],
+
+  // AUSTRALIA & NZ
   [-40, -10, 113, 154], [-47, -34, 166, 179],
+
+  // ICELAND
   [63, 67,  -24,  -13],
 ];
 
@@ -129,8 +156,8 @@ const DEG = Math.PI / 180;
 function generateDotData(candidateCount) {
   const dots = [];
   const golden = Math.PI * (3 - Math.sqrt(5));
-  const JITTER  = 0.012;
-  const KEEP    = 0.78;
+  const JITTER  = 0.012;  // angular jitter radius in radians (~0.7°)
+  const KEEP    = 0.78;   // fraction of land candidates actually kept
 
   for (let i = 0; i < candidateCount; i++) {
     const y = 1 - (i / (candidateCount - 1)) * 2;
@@ -158,7 +185,7 @@ function generateDotData(candidateCount) {
   return dots;
 }
 
-const DOT_DATA = generateDotData(22000);
+const DOT_DATA = generateDotData(26400);
 
 function mulberry32(seed) {
   return function() {
@@ -357,13 +384,48 @@ export default function NodeGlobe() {
         this.end   = endVec.clone().multiplyScalar(CONFIG.endpointLift);
         this.color = new THREE.Color(CONFIG.arcColors[Math.floor(Math.random() * CONFIG.arcColors.length)]);
 
-        const mid = this.start.clone().add(this.end).multiplyScalar(0.5)
-                      .normalize()
-                      .multiplyScalar(CONFIG.radius + CONFIG.arcLift);
-        this.curve = new THREE.QuadraticBezierCurve3(this.start, mid, this.end);
-
         this.N = CONFIG.arcSegments;
-        this.samplePoints = this.curve.getPoints(this.N);
+        const startUnit = this.start.clone().normalize();
+        const endUnit   = this.end.clone().normalize();
+        const dot = Math.min(1, Math.max(-1, startUnit.dot(endUnit)));
+        const omega = Math.acos(dot);
+        const sinOmega = Math.sin(omega);
+
+        const baseRadius = this.start.length();
+        const samples = new Array(this.N + 1);
+        for (let i = 0; i <= this.N; i++) {
+          const t = i / this.N;
+          let px, py, pz;
+          if (sinOmega < 0.001) {
+            px = startUnit.x; py = startUnit.y; pz = startUnit.z;
+          } else {
+            const s1 = Math.sin((1 - t) * omega) / sinOmega;
+            const s2 = Math.sin(t * omega)       / sinOmega;
+            px = startUnit.x * s1 + endUnit.x * s2;
+            py = startUnit.y * s1 + endUnit.y * s2;
+            pz = startUnit.z * s1 + endUnit.z * s2;
+          }
+          const lift = CONFIG.arcLift * Math.sin(t * Math.PI);
+          const r = baseRadius + lift;
+          samples[i] = new THREE.Vector3(px * r, py * r, pz * r);
+        }
+        this.samplePoints = samples;
+
+        const samplesRef = samples;
+        const N = this.N;
+        this.curve = {
+          getPoint(t, target) {
+            const f = t * N;
+            const i0 = Math.min(N - 1, Math.max(0, Math.floor(f)));
+            const i1 = i0 + 1;
+            const a = f - i0;
+            const p0 = samplesRef[i0], p1 = samplesRef[i1];
+            target.x = p0.x + (p1.x - p0.x) * a;
+            target.y = p0.y + (p1.y - p0.y) * a;
+            target.z = p0.z + (p1.z - p0.z) * a;
+            return target;
+          }
+        };
 
         const positions = new Float32Array((this.N + 1) * 3);
         const colors    = new Float32Array((this.N + 1) * 3);
@@ -404,7 +466,7 @@ export default function NodeGlobe() {
         this.startDot.userData.active = true;
 
         this.pulses = [];
-        this._spawnPulse(this.start, 0, this.distScale);
+        this._spawnPulse(this.start, 0, this.distScale, 'start');
 
         this.time = 0;
         this.totalDur = CONFIG.arcSweepDur + CONFIG.arcHoldDur + CONFIG.arcFadeDur;
@@ -499,13 +561,43 @@ export default function NodeGlobe() {
         }
 
         const fadeMul = ud.fadeMul != null ? ud.fadeMul : 1;
-        ud.core.material.opacity = coreOpacity * fadeMul;
-        ud.halo.material.opacity = haloOpacity * fadeMul;
+        const occ     = ud.occ != null ? ud.occ : 1;
+        const mul = fadeMul * occ;
+        ud.core.material.opacity = coreOpacity * mul;
+        ud.halo.material.opacity = haloOpacity * mul;
       }
 
-      _spawnPulse(pos, delay, sizeMult = 1) {
+      _spawnPulse(pos, delay, sizeMult = 1, role = 'start') {
+        const SEGS = 64;
+        const ringRadius = CONFIG.radius * CONFIG.endpointLift * 1.001;
+        const center = pos.clone().normalize();
+
+        const up = Math.abs(center.y) < 0.9
+          ? new THREE.Vector3(0, 1, 0)
+          : new THREE.Vector3(1, 0, 0);
+        const tangent  = new THREE.Vector3().crossVectors(up, center).normalize();
+        const bitangent = new THREE.Vector3().crossVectors(center, tangent).normalize();
+
+        const baseAng = (CONFIG.pulseBaseInner / CONFIG.radius) * sizeMult;
+        const thickAng = ((CONFIG.pulseBaseOuter - CONFIG.pulseBaseInner) / CONFIG.radius) * sizeMult;
+
+        const vertexCount = SEGS * 2 + 2;
+        const positions = new Float32Array(vertexCount * 3);
+
+        const geo = new THREE.BufferGeometry();
+        geo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+        const indices = [];
+        for (let i = 0; i < SEGS; i++) {
+          const a = i * 2;
+          const b = i * 2 + 1;
+          const c = ((i + 1) % SEGS) * 2;
+          const d = ((i + 1) % SEGS) * 2 + 1;
+          indices.push(a, b, d,  a, d, c);
+        }
+        geo.setIndex(indices);
+
         const ring = new THREE.Mesh(
-          new THREE.RingGeometry(CONFIG.pulseBaseInner * sizeMult, CONFIG.pulseBaseOuter * sizeMult, 64),
+          geo,
           new THREE.MeshBasicMaterial({
             color: this.color,
             transparent: true,
@@ -514,10 +606,52 @@ export default function NodeGlobe() {
             depthWrite: false,
           })
         );
-        ring.position.copy(pos);
-        ring.lookAt(0, 0, 0);
+        ring.renderOrder = 4;
         globeGroup.add(ring);
-        this.pulses.push({ ring, delay, elapsed: 0, dead: false });
+
+        const pulse = {
+          ring,
+          geo,
+          delay,
+          elapsed: 0,
+          dead: false,
+          role,
+          center, tangent, bitangent,
+          baseAng, thickAng, ringRadius,
+          segs: SEGS,
+        };
+        this.pulses.push(pulse);
+        this._rebuildPulseGeometry(pulse, baseAng);
+      }
+
+      _rebuildPulseGeometry(p, currentAng) {
+        const half = p.thickAng * 0.5;
+        const inner = Math.max(0, currentAng - half);
+        const outer = currentAng + half;
+        const positions = p.geo.attributes.position.array;
+        for (let i = 0; i < p.segs; i++) {
+          const phi = (i / p.segs) * Math.PI * 2;
+          const cosP = Math.cos(phi), sinP = Math.sin(phi);
+          const cosI = Math.cos(inner), sinI = Math.sin(inner);
+          const cosO = Math.cos(outer), sinO = Math.sin(outer);
+
+          const iX = cosI * p.center.x + sinI * (cosP * p.tangent.x + sinP * p.bitangent.x);
+          const iY = cosI * p.center.y + sinI * (cosP * p.tangent.y + sinP * p.bitangent.y);
+          const iZ = cosI * p.center.z + sinI * (cosP * p.tangent.z + sinP * p.bitangent.z);
+
+          const oX = cosO * p.center.x + sinO * (cosP * p.tangent.x + sinP * p.bitangent.x);
+          const oY = cosO * p.center.y + sinO * (cosP * p.tangent.y + sinP * p.bitangent.y);
+          const oZ = cosO * p.center.z + sinO * (cosP * p.tangent.z + sinP * p.bitangent.z);
+
+          const base = i * 2 * 3;
+          positions[base]     = iX * p.ringRadius;
+          positions[base + 1] = iY * p.ringRadius;
+          positions[base + 2] = iZ * p.ringRadius;
+          positions[base + 3] = oX * p.ringRadius;
+          positions[base + 4] = oY * p.ringRadius;
+          positions[base + 5] = oZ * p.ringRadius;
+        }
+        p.geo.attributes.position.needsUpdate = true;
       }
 
       _updatePulses(dt) {
@@ -527,26 +661,44 @@ export default function NodeGlobe() {
           p.elapsed += dt;
           const t = Math.min(1, p.elapsed / CONFIG.pulseDur);
           const eased = easeOutCubic(t);
-          const scale = 1 + eased * (CONFIG.pulseMaxScale - 1);
-          p.ring.scale.set(scale, scale, scale);
+          const currentAng = p.baseAng + eased * p.baseAng * (CONFIG.pulseMaxScale - 1);
+          this._rebuildPulseGeometry(p, currentAng);
+
           const decay = 1 - eased;
           const tailFade = t > 0.85 ? (1 - (t - 0.85) / 0.15) : 1;
-          p.ring.material.opacity = decay * tailFade * CONFIG.pulseOpacity;
+          const occDot = (p.role === 'end') ? this.endDot : this.startDot;
+          const occ = (occDot.userData.occ != null) ? occDot.userData.occ : 1;
+          p.ring.material.opacity = decay * tailFade * CONFIG.pulseOpacity * occ;
+
           if (t >= 1) {
             p.dead = true;
             globeGroup.remove(p.ring);
-            p.ring.geometry.dispose();
+            p.geo.dispose();
             p.ring.material.dispose();
           }
         }
       }
 
-      update(dt) {
+      _occlusionFactor(p, cY, sY, cX, sX) {
+        const y1 = p.y * cX - p.z * sX;
+        const z1 = p.y * sX + p.z * cX;
+        const z2 = -p.x * sY + z1 * cY;
+        const r = p.length();
+        const c = r > 0.0001 ? z2 / r : 1;
+        return CONFIG.farSideDim + (1 - CONFIG.farSideDim) * (0.5 + 0.5 * c);
+      }
+
+      update(dt, cY, sY, cX, sX) {
         this.time += dt;
 
         const isLive = this.time < CONFIG.arcSweepDur;
         this.startDot.userData.live = isLive;
         this.endDot.userData.live = false;
+
+        if (cY !== undefined) {
+          this.startDot.userData.occ = this._occlusionFactor(this.start, cY, sY, cX, sX);
+          this.endDot.userData.occ   = this._occlusionFactor(this.end,   cY, sY, cX, sX);
+        }
 
         if (this.time < CONFIG.arcSweepDur) {
           const rawT = this.time / CONFIG.arcSweepDur;
@@ -587,7 +739,7 @@ export default function NodeGlobe() {
               this._dirtyIdx = -1;
             }
             this.endDot.userData.active = true;
-            this._spawnPulse(this.end, 0, this.distScale);
+            this._spawnPulse(this.end, 0, this.distScale, 'end');
             this.destPulsesFired = true;
           }
           const holdT = this.time - CONFIG.arcSweepDur;
@@ -597,8 +749,8 @@ export default function NodeGlobe() {
                              (CONFIG.arcPersistOpacity - CONFIG.arcLineOpacity) * blend;
         }
         else {
-          const phaseT = (this.time - CONFIG.arcSweepDur - CONFIG.arcHoldDur) / CONFIG.arcFadeDur;
-          const fade = 1 - easeInOutCubic(Math.min(1, phaseT));
+          const phaseT = Math.min(1, (this.time - CONFIG.arcSweepDur - CONFIG.arcHoldDur) / CONFIG.arcFadeDur);
+          const fade = 1 - phaseT * phaseT * (3 - 2 * phaseT);
           this.mat.opacity = CONFIG.arcPersistOpacity * fade;
           this.startDot.userData.fadeMul = fade;
           this.endDot.userData.fadeMul   = fade;
@@ -642,7 +794,7 @@ export default function NodeGlobe() {
       let a = randomLandPoint();
       let b = randomLandPoint();
       let tries = 0;
-      while (a.distanceTo(b) < CONFIG.radius * 1.8 && tries < 40) {
+      while (a.distanceTo(b) < CONFIG.radius * 1.9 && tries < 40) {
         b = randomLandPoint();
         tries++;
       }
@@ -654,6 +806,66 @@ export default function NodeGlobe() {
     spawnTimeouts.push(setTimeout(spawnTransaction, 400));
     spawnTimeouts.push(setTimeout(spawnTransaction, 900));
 
+    // Drag interaction state
+    const drag = {
+      active: false,
+      startX: 0, startY: 0,
+      startRotY: 0, startRotX: 0,
+      resumeIn: 0,
+    };
+    const dragSensitivity = 350;
+    const resumePauseSec  = 1.5;
+    const maxPitch        = Math.PI / 2 - 0.1;
+
+    function pointerDown(e) {
+      drag.active = true;
+      drag.startX = e.clientX;
+      drag.startY = e.clientY;
+      drag.startRotY = globeGroup.rotation.y;
+      drag.startRotX = globeGroup.rotation.x;
+      renderer.domElement.style.cursor = 'grabbing';
+    }
+
+    function pointerMove(e) {
+      if (!drag.active) return;
+      const dx = e.clientX - drag.startX;
+      const dy = e.clientY - drag.startY;
+      globeGroup.rotation.y = drag.startRotY + dx / dragSensitivity;
+      globeGroup.rotation.x = Math.max(-maxPitch, Math.min(maxPitch,
+        drag.startRotX + dy / dragSensitivity));
+    }
+
+    function pointerUp() {
+      if (!drag.active) return;
+      drag.active = false;
+      drag.resumeIn = resumePauseSec;
+      renderer.domElement.style.cursor = 'grab';
+    }
+
+    renderer.domElement.style.cursor = 'grab';
+    renderer.domElement.style.touchAction = 'none';
+
+    renderer.domElement.addEventListener('mousedown', pointerDown);
+    window.addEventListener('mousemove', pointerMove);
+    window.addEventListener('mouseup', pointerUp);
+
+    const touchStartHandler = (e) => {
+      if (e.touches.length === 1) {
+        pointerDown({ clientX: e.touches[0].clientX, clientY: e.touches[0].clientY });
+      }
+    };
+    const touchMoveHandler = (e) => {
+      if (drag.active && e.touches.length === 1) {
+        pointerMove({ clientX: e.touches[0].clientX, clientY: e.touches[0].clientY });
+      }
+    };
+    const touchEndHandler = pointerUp;
+
+    renderer.domElement.addEventListener('touchstart', touchStartHandler, { passive: false });
+    window.addEventListener('touchmove', touchMoveHandler, { passive: false });
+    window.addEventListener('touchend', touchEndHandler);
+    window.addEventListener('touchcancel', touchEndHandler);
+
     let animationFrameId;
 
     function animate() {
@@ -661,7 +873,16 @@ export default function NodeGlobe() {
 
       const dt = Math.min(clock.getDelta(), 0.1);
 
-      globeGroup.rotation.y += CONFIG.rotationSpeed * dt;
+      if (!drag.active && drag.resumeIn <= 0) {
+        globeGroup.rotation.y += CONFIG.rotationSpeed * dt;
+      } else if (!drag.active) {
+        drag.resumeIn -= dt;
+      }
+
+      const ry = globeGroup.rotation.y;
+      const rx = globeGroup.rotation.x;
+      const cosY = Math.cos(ry), sinY = Math.sin(ry);
+      const cosX = Math.cos(rx), sinX = Math.sin(rx);
 
       spawnCountdown -= dt;
       if (spawnCountdown <= 0 && transactions.length < CONFIG.maxActive) {
@@ -671,7 +892,7 @@ export default function NodeGlobe() {
       }
 
       for (let i = transactions.length - 1; i >= 0; i--) {
-        transactions[i].update(dt);
+        transactions[i].update(dt, cosY, sinY, cosX, sinX);
         if (transactions[i].done()) {
           transactions[i].dispose();
           transactions.splice(i, 1);
@@ -694,6 +915,12 @@ export default function NodeGlobe() {
 
     return () => {
       window.removeEventListener('resize', handleResize);
+      window.removeEventListener('mousemove', pointerMove);
+      window.removeEventListener('mouseup', pointerUp);
+      window.removeEventListener('touchmove', touchMoveHandler);
+      window.removeEventListener('touchend', touchEndHandler);
+      window.removeEventListener('touchcancel', touchEndHandler);
+
       cancelAnimationFrame(animationFrameId);
       spawnTimeouts.forEach(clearTimeout);
       
