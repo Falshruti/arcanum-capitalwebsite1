@@ -53,38 +53,41 @@ export default function ThesisText() {
 
         <div className="thesis-content">
         {paragraphs.map((p, pIdx) => {
-          const words = p.text.split(' ');
-
           return (
             <p key={pIdx} className="thesis-para">
-              {words.map((word, wIdx) => {
-                // Paragraph 0: "inevitable(7) financial(8) disruption(9)"
-                // Paragraph 1: "global,(6) programmable(7) payments(8)"
-                const isTargetP0 = pIdx === 0 && wIdx >= 7 && wIdx <= 9;
-                const isTargetP1 = pIdx === 1 && wIdx >= 6 && wIdx <= 8;
-                
+              {p.text.split('').map((char, cIdx) => {
                 let isActive = false;
-                if (isTargetP0) {
-                  const targetWordIdx = wIdx - 7; // 0, 1, 2
-                  const activationPoint = (targetWordIdx + 1) / 4;
-                  // Paragraph 1 happens in the first half of the scroll (0->0.5 mapped to 0->1)
-                  const localProgress = Math.min(Math.max(scrollProgress * 2, 0), 1);
-                  isActive = localProgress >= activationPoint;
-                } else if (isTargetP1) {
-                  const targetWordIdx = wIdx - 6; // 0, 1, 2
-                  const activationPoint = (targetWordIdx + 1) / 4;
-                  // Paragraph 2 happens in the second half of the scroll (0.5->1 mapped to 0->1)
-                  const localProgress = Math.min(Math.max((scrollProgress - 0.5) * 2, 0), 1);
-                  isActive = localProgress >= activationPoint;
+                
+                if (pIdx === 0) {
+                  // Target: "inevitable financial disruption"
+                  // Starts at index 44, length 31
+                  const targetStart = 44;
+                  const targetEnd = 75; 
+                  
+                  if (cIdx >= targetStart && cIdx < targetEnd) {
+                    const localProgress = Math.min(Math.max(scrollProgress * 2, 0), 1);
+                    const activationPoint = (cIdx - targetStart + 1) / 31;
+                    isActive = localProgress >= activationPoint;
+                  }
+                } else if (pIdx === 1) {
+                  // Target: "global, programmable payments"
+                  // Starts at index 43, length 29
+                  const targetStart = 43;
+                  const targetEnd = 72;
+                  
+                  if (cIdx >= targetStart && cIdx < targetEnd) {
+                    const localProgress = Math.min(Math.max((scrollProgress - 0.5) * 2, 0), 1);
+                    const activationPoint = (cIdx - targetStart + 1) / 29;
+                    isActive = localProgress >= activationPoint;
+                  }
                 }
-                // If not target, it stays inactive (not updated)
 
                 return (
                   <span
-                    key={wIdx}
+                    key={cIdx}
                     className={`nav-word ${isActive ? 'active' : 'inactive'}`}
                   >
-                    {word}{' '}
+                    {char}
                   </span>
                 );
               })}

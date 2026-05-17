@@ -305,10 +305,12 @@
 
 .invest-table tr:hover {
   opacity: 0.6;
+  cursor: pointer;
 }
 
 .invest-table tr:hover td {
   border-bottom-color: rgba(255, 255, 255, 0.15);
+  cursor: pointer;
 }
 
 .invest-table tr:last-child td {
@@ -364,7 +366,8 @@
 /* ── Full Portfolio Button at Bottom ── */
 .portfolio-btn-wrap {
   display: flex;
-  justify-content: center; /* Desktop centering */
+  justify-content: center;
+  /* Desktop centering */
   margin-top: 2.5rem;
 }
 

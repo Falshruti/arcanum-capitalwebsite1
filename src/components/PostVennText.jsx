@@ -48,34 +48,36 @@ export default function PostVennText() {
         alignItems: 'center',
         justifyContent: 'center',
         textAlign: 'center',
-        padding: '2rem'
+        padding: '0rem'
       }}
     >
       <div className="thesis-line-vertical"></div>
 
       <div className="thesis-content" style={{ marginTop: '-1rem' }}>
         <p className="thesis-para" style={{ fontSize: '1.45rem', lineHeight: '1.6' }}>
-          {words.map((word, wIdx) => {
-            const isTarget = wIdx >= boldStart && wIdx < boldStart + boldLength;
+          {textContent.split('').map((char, cIdx) => {
+            // Target: "financial infrastructure for digital assets,"
+            // Starts at index 17, length 44
+            const targetStart = 17;
+            const targetEnd = 61;
 
             let isActive = false;
-            if (isTarget) {
-              const targetWordIdx = wIdx - boldStart;
-              const activationPoint = (targetWordIdx + 1) / (boldLength + 1);
+            if (cIdx >= targetStart && cIdx < targetEnd) {
+              const activationPoint = (cIdx - targetStart + 1) / 44;
               isActive = scrollProgress >= activationPoint;
             }
 
             return (
               <span
-                key={wIdx}
+                key={cIdx}
                 className={`nav-word ${isActive ? 'active' : 'inactive'}`}
               >
-                {word}{' '}
+                {char}
               </span>
             );
           })}
         </p>
       </div>
-    </section>
+    </section >
   );
 }

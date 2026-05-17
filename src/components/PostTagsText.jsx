@@ -41,7 +41,7 @@ export default function PostTagsText() {
       className="thesis-section thesis-reduced-height container"
       ref={sectionRef}
       style={{
-        padding: '2rem 0',
+        padding: '0rem 0',
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
@@ -49,31 +49,32 @@ export default function PostTagsText() {
         textAlign: 'center'
       }}
     >
-      <div className="thesis-content" style={{ maxWidth: '400px', paddingBottom: '2rem' }}>
+      <div className="thesis-content" style={{ maxWidth: '400px', paddingBottom: '1rem' }}>
         <p className="thesis-para" style={{ fontSize: '1.6rem', lineHeight: '1.6' }}>
-          {words.map((word, wIdx) => {
-            // Words: The(0) development(1) of(2) this(3) core(4) infrastructure(5)
-            const isTarget = wIdx === 4 || wIdx === 5;
+          {textContent.split('').map((char, cIdx) => {
+            // Target: "core infrastructure"
+            // Starts at index 24, length 19
+            const targetStart = 24;
+            const targetEnd = 43;
 
             let isActive = false;
-            if (isTarget) {
-              const targetWordIdx = wIdx - 4; // 0, 1
-              const activationPoint = (targetWordIdx + 1) / 3;
+            if (cIdx >= targetStart && cIdx < targetEnd) {
+              const activationPoint = (cIdx - targetStart + 1) / 19;
               isActive = scrollProgress >= activationPoint;
             }
 
             return (
               <span
-                key={wIdx}
+                key={cIdx}
                 className={`nav-word ${isActive ? 'active' : 'inactive'}`}
               >
-                {word}{' '}
+                {char}
               </span>
             );
           })}
         </p>
       </div>
-      <div className="thesis-line-vertical"></div>
+      <div className="thesis-line-vertical" style={{ marginBottom: '0rem' }}></div>
     </section>
   );
 }

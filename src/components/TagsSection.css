@@ -93,7 +93,7 @@
   position: relative;
   display: flex;
   align-items: center;
-  margin-bottom: 2.4rem;
+  margin-bottom: 1rem;
   max-width: 100%;
   /* prevent any single row from exceeding container */
   box-sizing: border-box;
