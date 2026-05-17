@@ -5,6 +5,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  cursor: pointer;
 }
 
 .team-section .section-title {
@@ -134,4 +135,137 @@
 
 .icon:hover {
   opacity: 0.7;
+}
+
+/* --- Team Modal Styles --- */
+.team-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.75);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  backdrop-filter: blur(4px);
+}
+
+.team-modal-content {
+  background: #0b1528;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 3.5rem 3rem 2.5rem 3rem;
+  width: 90%;
+  max-width: 1000px;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+  animation: modalFadeIn 0.3s ease;
+  text-align: left;
+}
+
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.team-modal-close {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  background: transparent;
+  border: none;
+  color: #64748b;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: color 0.2s;
+  padding: 0.5rem;
+}
+
+.team-modal-close:hover {
+  color: #fff;
+}
+
+.team-modal-header {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.team-modal-name {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #fff;
+  margin: 0 0 0.5rem 0;
+  letter-spacing: 1px;
+}
+
+.team-modal-title {
+  font-size: 1.15rem;
+  color: #94a3b8;
+  margin: 0 0 0.8rem 0;
+}
+
+.team-modal-icon {
+  display: inline-flex;
+  color: #fff;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.team-modal-icon:hover {
+  opacity: 0.7;
+}
+
+.team-modal-bio {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: #e2e8f0;
+  margin-bottom: 3rem;
+}
+
+.team-modal-companies {
+  display: flex;
+  gap: 2.5rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.company-logo-img {
+  height: 30px;
+  max-width: 150px;
+  object-fit: contain;
+  opacity: 0.9;
+}
+
+@media (max-width: 768px) {
+  .team-modal-content {
+    padding: 2.5rem 1.5rem 2rem 1.5rem;
+  }
+
+  .team-modal-name {
+    font-size: 2rem;
+  }
+
+  .team-modal-bio {
+    font-size: 0.95rem;
+  }
+
+  .team-modal-companies {
+    gap: 1.5rem;
+  }
+
+  .company-logo-img {
+    height: 25px;
+  }
 }
