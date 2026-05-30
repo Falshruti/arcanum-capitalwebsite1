@@ -80,7 +80,8 @@
 }
 
 .nav-word.inactive {
-  color: #475569;
+  color: #ffffff;
+  opacity: 0.5;
   /* Darker grey to match image remaining light */
 }
 

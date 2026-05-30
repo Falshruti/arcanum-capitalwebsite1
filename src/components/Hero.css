@@ -40,7 +40,8 @@
 
 .light-text {
   font-weight: 400;
-  color: #cbd5e1;
+  color: #ffffff;
+  opacity: 0.5;
 }
 
 .bold-text {
@@ -67,7 +68,8 @@
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  height: 550px; /* Base height for desktop */
+  height: 550px;
+  /* Base height for desktop */
 }
 
 .globe-placeholder {
@@ -116,7 +118,8 @@
 
   .hero-globe {
     width: 100%;
-    height: 380px; /* Specific height for mobile */
+    height: 380px;
+    /* Specific height for mobile */
     display: flex;
     justify-content: center;
     position: relative;

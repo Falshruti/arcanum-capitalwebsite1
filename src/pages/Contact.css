@@ -56,7 +56,7 @@
 .contact-form-group label {
   font-size: 0.85rem;
   color: #ffffff;
-  opacity: 0.65;
+  opacity: 0.5;
   font-weight: 500;
 }
 
@@ -108,7 +108,7 @@
 }
 
 .contact-submit-btn:disabled {
-  opacity: 0.6;
+  opacity: 0.5;
   cursor: not-allowed;
   transform: none;
 }
@@ -152,3 +152,4 @@
     max-width: 100%;
   }
 }
+

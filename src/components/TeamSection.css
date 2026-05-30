@@ -13,6 +13,7 @@
   margin-bottom: 4rem;
   text-align: left;
   color: #fff;
+  cursor: pointer;
 }
 
 @media (max-width: 900px) {
@@ -31,6 +32,7 @@
   /* Exactly 4 members per row */
   gap: 3rem;
   row-gap: 5rem;
+  cursor: pointer;
 }
 
 @media (max-width: 1024px) {
@@ -112,7 +114,8 @@
 
 .member-title {
   font-size: 0.9rem;
-  color: #94a3b8;
+  color: #ffffff;
+  opacity: 0.5;
   margin-bottom: 0;
 }
 

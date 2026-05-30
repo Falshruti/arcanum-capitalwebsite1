@@ -1,37 +1,64 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './InvestmentsStack.css';
+import logocointelegraph from '../assets/news/logocointelegraph.svg';
+import forbes from '../assets/news/forbes.svg';
+import dein from '../assets/news/blog1.png';
 
 const stackItems = [
   {
-    title: 'Momentum: From Zero to the Largest DEX on Sui',
+    id: 1,
+    title: 'How DEIN is Disrupting the Trillion-Dollar Insurance Industry',
     desc: 'We back the builders fine tuning the blockchain based payments stack.',
-    tag: 'Blog'
+    category: 'Blog',
+    tag: 'Blog',
+    logo: dein,
+    date: 'January 7, 2026',
   },
   {
-    title: 'Momentum: From Zero to the Largest DEX on Sui',
+    id: 2,
+    title: 'Arcanum Capital Disrupts Web3 Venture Capital With ‘Circular Economy',
     desc: 'We back the builders fine tuning the blockchain based payments stack.',
-    tag: 'News'
+    category: 'News',
+    tag: 'News',
+    logo: forbes,
+    date: 'February 7, 2024',
   },
   {
+    id: 3,
     title: 'Momentum: From Zero to the Largest DEX on Sui',
     desc: 'We back the builders fine tuning the blockchain based payments stack.',
-    tag: 'Blog'
+    category: 'Blog',
+    tag: 'Blog',
+    logo: logocointelegraph,
+    date: 'Apr 15, 2025',
   },
   {
-    title: 'Momentum: From Zero to the Largest DEX on Sui',
+    id: 4,
+    title: 'Arcanum Capital Disrupts Web3 Venture Capital With ‘Circular Economy’',
     desc: 'We back the builders fine tuning the blockchain based payments stack.',
-    tag: 'Blog'
+    category: 'News',
+    tag: 'News',
+    logo: logocointelegraph,
+    date: 'February 7, 2024',
   },
   {
-    title: 'Momentum: From Zero to the Largest DEX on Sui',
+    id: 5,
+    title: 'The Internet is Being Rewritten: Santa Browser Holds the Pen',
     desc: 'We back the builders fine tuning the blockchain based payments stack.',
-    tag: 'Blog'
+    category: 'Blog',
+    tag: 'Blog',
+    logo: logocointelegraph,
+    date: 'Mar 22, 2025',
   },
   {
+    id: 6,
     title: 'Momentum: From Zero to the Largest DEX on Sui',
     desc: 'We back the builders fine tuning the blockchain based payments stack.',
-    tag: 'Blog'
+    category: 'Blog',
+    tag: 'Blog',
+    logo: logocointelegraph,
+    date: 'Mar 10, 2025',
   }
 ];
 

@@ -39,6 +39,7 @@
   padding: 0 2rem;
   position: relative;
   z-index: 1;
+  cursor: pointer;
 }
 
 /* ── Top Grid Section ── */
@@ -54,6 +55,7 @@
 
 .footer-logo-img {
   width: 250px;
+  cursor: pointer;
 }
 
 .highlights-grid {
@@ -162,8 +164,8 @@
 
 .subscribe-title .thin {
   font-weight: 300;
-  color: #8892b0;
-  /* Dimmed state as per screen */
+  color: #ffffff;
+  opacity: 0.5;
 }
 
 .subscribe-form {
@@ -243,7 +245,8 @@
   font-size: 0.95rem;
   font-weight: 300;
   transition: color 0.2s;
-  opacity: 0.65;
+  opacity: 0.5;
+  cursor: pointer;
 }
 
 .footer-nav a:hover {
@@ -260,13 +263,14 @@
   color: #ffffff;
   font-size: 0.9rem;
   font-weight: 300;
-  opacity: 0.65;
+  opacity: 0.5;
 }
 
 .footer-email {
   color: #ffffff;
   font-weight: 400;
-  opacity: 0.65;
+  opacity: 0.5;
+  cursor: pointer;
 }
 
 .footer-social-icons {
@@ -277,6 +281,7 @@
 .social-icon {
   color: #ffffff;
   opacity: 1;
+  cursor: pointer;
 }
 
 .social-icon:hover {
