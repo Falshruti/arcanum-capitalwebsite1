@@ -55,6 +55,7 @@
 .stack-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .highlight-circle {
@@ -83,8 +84,47 @@
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  min-height: 250px;
+  min-height: 330px;
   /* Ensure consistent height for pattern */
+}
+
+/* ── Card top: Source logo + date */
+.card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.2rem;
+  position: relative;
+  z-index: 2;
+}
+
+.card-logo {
+  height: 24px;
+  width: auto;
+  object-fit: contain;
+}
+
+.card-date {
+  font-size: 0.85rem;
+  color: #94a3b8;
+  letter-spacing: 0.5px;
+}
+
+.card-footer {
+  margin-top: auto;
+  position: relative;
+  z-index: 2;
+}
+
+.pill-tag {
+  display: inline-block;
+  padding: 0.55rem 1.2rem;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 25px;
+  font-size: 0.82rem;
+  color: #ffffff;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
 }
 
 /* ── Hover Pattern (Image Effect) ── */

@@ -1,4 +1,5 @@
 import React from 'react';
+import './Home.css';
 import Hero from '../components/Hero';
 import TrustedBy from '../components/TrustedBy';
 import ThesisText from '../components/ThesisText';
@@ -12,7 +13,7 @@ import InvestmentsStack from '../components/InvestmentsStack';
 
 const Home = () => {
   return (
-    <>
+    <div className="home-page">
       <Hero />
       <TrustedBy />
       <ThesisText />
@@ -23,7 +24,7 @@ const Home = () => {
       <TeamSection />
       <VisionarySection />
       <InvestmentsStack />
-    </>
+    </div>
   );
 };
 
