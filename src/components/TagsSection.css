@@ -24,8 +24,8 @@
 }
 
 .ts-section {
-  min-height: 100vh;
-  padding: 4rem 2rem;
+  min-height: 90vh;
+  padding: 0rem 2rem;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
@@ -206,6 +206,19 @@
   position: relative;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
   flex-shrink: 0;
+}
+
+.ts-logo-img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-left: -14px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  flex-shrink: 0;
+  border: 3px solid #ffffff;
+  background: #fff;
+  position: relative;
 }
 
 .ts-logo-circle:first-child {

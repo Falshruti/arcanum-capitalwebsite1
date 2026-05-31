@@ -3,14 +3,12 @@ import './TrustedBy.css';
 
 export default function TrustedBy() {
   const logos = [
-    { name: 'Ethena', logoStyle: 'tether' },
-    { name: 'ARBITRUM', logoStyle: 'luganodes' },
-    { name: 'P E N D L E', logoStyle: 'pendle' },
-    { name: 'PRIME Internet', logoStyle: 'sevenx' },
-    { name: 'pump.fun', logoStyle: 'mirana' },
-    { name: 'NOUS RESEARCH', sub: '', logoStyle: 'foresight' },
-    { name: 'Deribit', logoStyle: 'tavis' },
-    { name: 'defi.app', logoStyle: 'tether' }
+    { name: 'Tether', logoStyle: 'tether', src: '/trusted-logo1.png' },
+    { name: 'Arbitrum', logoStyle: 'luganodes', src: '/trusted-logo2.png' },
+    { name: 'Pendle', logoStyle: 'pendle', src: '/trusted-logo3.png' },
+    { name: 'Prime Internet', logoStyle: 'sevenx', src: '/trusted-logo4.png' },
+    { name: 'pump.fun', logoStyle: 'mirana', src: '/trusted-logo5.png' },
+    { name: 'Nous Research', logoStyle: 'foresight', src: '/trusted-logo6.png' },
   ];
 
   return (
@@ -27,7 +25,11 @@ export default function TrustedBy() {
             {/* Duplicated list for seamless scrolling */}
             {[...logos, ...logos].map((logo, index) => (
               <div className={`trusted-logo-item ${logo.logoStyle}`} key={index}>
-                <span className="logo-main">{logo.name}</span>
+                {logo.src ? (
+                  <img src={logo.src} alt={logo.name} className="trusted-logo-img" />
+                ) : (
+                  <span className="logo-main">{logo.name}</span>
+                )}
               </div>
             ))}
           </div>

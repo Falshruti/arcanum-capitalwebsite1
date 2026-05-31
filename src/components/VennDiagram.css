@@ -1,5 +1,5 @@
 .venn-section {
-  padding: 0 0 8rem 0;
+  padding: 0 0 4rem 0;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -78,28 +78,28 @@
   left: 50%;
   transform: translateX(-50%);
   align-items: flex-start;
-  padding-top: 4.5rem;
+  padding-top: 5.8rem;
 }
 
 .venn-left {
   bottom: 0;
   left: 0;
   align-items: flex-end;
-  padding-bottom: 7rem;
-  padding-right: 7rem;
+  padding-bottom: 8.5rem;
+  padding-right: 12rem;
 }
 
 .venn-right {
   bottom: 0;
   right: 0;
   align-items: flex-end;
-  padding-bottom: 7rem;
-  padding-left: 7rem;
+  padding-bottom: 8.5rem;
+  padding-left: 12rem;
 }
 
 .venn-label {
   position: absolute;
-  font-size: 0.75rem;
+  font-size: 0.85rem;
   font-weight: 600;
   color: #8fa0b5;
   /* Default muted matching design */
@@ -116,27 +116,27 @@
 }
 
 .label-center {
-  top: 52%;
+  top: 55%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
 
 .label-top-left {
   top: 44%;
-  left: 33%;
+  left: 30%;
   transform: translate(-50%, -50%);
 }
 
 .label-top-right {
   top: 44%;
-  right: 33%;
-  transform: translate(50%, -50%);
+  left: 70%;
+  transform: translate(-50%, -50%);
 }
 
 .label-bottom {
-  bottom: 25%;
+  top: 75%;
   left: 50%;
-  transform: translate(-50%, 50%);
+  transform: translate(-50%, -50%);
 }
 
 @media (max-width: 900px) {

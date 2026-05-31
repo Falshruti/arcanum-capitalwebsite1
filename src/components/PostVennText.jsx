@@ -51,7 +51,7 @@ export default function PostVennText() {
         padding: '0rem'
       }}
     >
-      <div className="thesis-line-vertical"></div>
+      <div className="thesis-line-vertical" style={{marginBottom: '5rem' }}></div>
 
       <div className="thesis-content" style={{ marginTop: '-1rem' }}>
         <p className="thesis-para" style={{ fontSize: '1.45rem', lineHeight: '1.6' }}>

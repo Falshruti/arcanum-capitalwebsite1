@@ -128,7 +128,7 @@
   gap: 4rem;
   align-items: center;
   white-space: nowrap;
-  animation: scrollMarquee 12s linear infinite;
+  animation: scrollMarquee 20s linear infinite;
   min-width: max-content;
 }
 
@@ -151,6 +151,19 @@
   font-weight: 500;
   font-size: 1.15rem;
   opacity: 0.8;
+}
+
+.trusted-logo-img {
+  max-height: 30px;
+  width: auto;
+  display: block;
+  object-fit: contain;
+}
+
+@media (max-width: 900px) {
+  .trusted-logo-img {
+    max-height: 20px;
+  }
 }
 
 @media (max-width: 900px) {

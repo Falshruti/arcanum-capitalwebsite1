@@ -12,9 +12,10 @@ const stackRows = [
     type: 'single',
     title: 'Stablecoin Settlement & Liquidity',
     logos: [
-      { c: '#26A17B', l: '₮' },
-      { c: '#1a1a1a', l: 'D' },
-      { c: '#FF6B00', l: '»' },
+      { src: '/tag1.png' },
+      { src: '/tag2.png' },
+      { src: '/tag3.png' },
+      { src: '/tag4.png' },
     ],
     extraIndent: 0,
     showConnector: true,
@@ -25,9 +26,11 @@ const stackRows = [
     type: 'single',
     title: 'Payment Rails & Orchestration',
     logos: [
-      { c: '#FFDE00', l: '✦' },
-      { c: '#CC0066', l: 'D' },
-      { c: '#FF1493', l: 'P' },
+      { src: '/tag5.png' },
+      { src: '/tag6.png' },
+      { src: '/tag7.png' },
+      { src: '/tag4.png' },
+
     ],
     extraIndent: 40,
     showConnector: true,
@@ -39,9 +42,10 @@ const stackRows = [
     right: {
       title: 'Tokenized Assets & Digital Capital Markets',
       logos: [
-        { c: '#000000', l: '✻' },
-        { c: '#FF6600', l: '◈' },
-        { c: '#00AAFF', l: '»' },
+        { src: '/tag8.png' },
+        { src: '/tag9.png' },
+        { src: '/tag10.png' },
+        { src: '/tag4.png' },
       ],
     },
     extraIndent: 80,
@@ -54,9 +58,10 @@ const stackRows = [
     right: {
       title: 'Programmable Finance & Credit',
       logos: [
-        { c: '#0066FF', l: '▶' },
-        { c: '#8B4513', l: '◉' },
-        { c: '#FF6600', l: '◎' },
+        { src: '/tag11.png' },
+        { src: '/tag12.png' },
+        { src: '/tag13.png' },
+        { src: '/tag4.png' },
       ],
     },
     extraIndent: 120,
@@ -150,11 +155,14 @@ export default function TagsSection() {
                     <span className="ts-card-label">{row.title}</span>
                     <div className="ts-logos">
                       {row.logos.map((lg, i) => (
-                        <span key={i} className="ts-logo-circle" style={{ background: lg.c }}>
-                          {lg.l}
-                        </span>
+                        lg && lg.src ? (
+                          <img key={i} src={lg.src} alt={`tag-${i}`} className="ts-logo-img" style={{ zIndex: 10 - i }} />
+                        ) : (
+                          <span key={i} className="ts-logo-circle" style={{ background: lg.c, zIndex: 10 - i }}>
+                            {lg.l}
+                          </span>
+                        )
                       ))}
-                      <span className="ts-logo-plus">+</span>
                     </div>
                   </div>
                 )}
@@ -177,11 +185,15 @@ export default function TagsSection() {
                       <span className="ts-card-label">{row.right.title}</span>
                       <div className="ts-logos">
                         {row.right.logos.map((lg, i) => (
-                          <span key={i} className="ts-logo-circle" style={{ background: lg.c }}>
-                            {lg.l}
-                          </span>
+                          lg && lg.src ? (
+                            <img key={i} src={lg.src} alt={`tag-${i}`} className="ts-logo-img" style={{ zIndex: 10 - i }} />
+                          ) : (
+                            <span key={i} className="ts-logo-circle" style={{ background: lg.c, zIndex: 10 - i }}>
+                              {lg.l}
+                            </span>
+                          )
                         ))}
-                        <span className="ts-logo-plus">+</span>
+
                       </div>
                     </div>
                   </div>

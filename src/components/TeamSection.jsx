@@ -56,13 +56,6 @@ const teamMembers = [
     urlX: ''
   },
   {
-    name: 'Caleb August', title: 'Associate', img: calebImg,
-    bio: 'Coming from the private equity sector with a focus on commercial real estate redevelopment projects in the United states, Caleb possesses a strong foundation in both traditional finance and alternative investments. Formerly, Caleb was involved with an angle investment group where he advised investors on prospective seed-stage startups. Caleb has been involved in the blockchain and Web3 industry since 2021.',
-    companies: [grandcanyonuniversity],
-    urlL: 'https://www.linkedin.com/in/calebaugust/',
-    urlx: 'https://x.com/bitcaleb'
-  },
-  {
     name: 'Lawrence Newhook', title: 'Funds Director, Advisor', img: lawrenceImg,
     bio: 'A Director of both Arcanum Emerging Technologies Fund I and Fund II, Lawrence Newhook is a veteran investment professional with a 20+ year track record investing globally across all asset classes. He has built successful investment and hedge fund portfolios for the pension, family office, and high-net-worth investor communities, with a particular focus on identifying and extracting sources of alpha from both public and private markets. Lawrence serves as the President & Chief Investment Officer of Alpha Innovations, where he oversees all facets of the business, including product innovation, alpha identification, and risk management. Before launching Alpha Innovations, Lawrence was a member of the management team at Point72 Asset Management LP for twelve years, where he managed the team responsible for the firm’s external investments in hedge funds, private equity, venture capital, and real estate. His team was also responsible for evaluating all discretionary and quantitative PMs, analysts, and traders to ensure the standard of only hiring best-in-class investment talent. Earlier in his career, Mr. Newhook was the Portfolio Manager of Alternative Strategies for OMERS, one of the largest Canadian pension plans, where he designed, developed, and managed its alternative investments program. Prior to this, he traded international OTC, listed derivatives, and cash markets, and helped manage global derivatives and FX portfolios. Mr. Newhook is a CFA Charterholder and has a Masters in Financial Economics from the University of London and a Bachelor of Commerce (Management Economics) degree from the University of Guelph.',
     companies: [point, omers, alphainnovations],
@@ -99,7 +92,7 @@ export default function TeamSection() {
   const closeModal = () => setSelectedMember(null);
 
   return (
-    <section className="team-section container">
+    <section id="team" className="team-section container">
       <div className="section-header">
         <h2 className="section-title">Team</h2>
       </div>

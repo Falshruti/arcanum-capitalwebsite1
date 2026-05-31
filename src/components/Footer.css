@@ -20,16 +20,15 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-image: url('/hero-bg.png');
-  background-size: cover;
-  background-position: center top;
+  background-image:  url('/hero-bg.png');
+  background-size: cover, cover;
+  background-position: center top, center top;
   /* Adjusted for flipped orientation */
-  background-repeat: no-repeat;
+  background-repeat: no-repeat, no-repeat;
   z-index: 0;
   pointer-events: none;
   transform: scaleY(-1);
-  /* Flip vertically as requested */
-  opacity: 0.8;
+  opacity: 0.9;
   /* Subtle transparency for better blending */
 }
 
@@ -39,7 +38,6 @@
   padding: 0 2rem;
   position: relative;
   z-index: 1;
-  cursor: pointer;
 }
 
 /* ── Top Grid Section ── */
@@ -282,6 +280,7 @@
   color: #ffffff;
   opacity: 1;
   cursor: pointer;
+  transition: transform 0.2s ease, opacity 0.2s ease;
 }
 
 .social-icon:hover {

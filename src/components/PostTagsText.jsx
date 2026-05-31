@@ -49,7 +49,7 @@ export default function PostTagsText() {
         textAlign: 'center'
       }}
     >
-      <div className="thesis-content" style={{ maxWidth: '400px', paddingBottom: '1rem' }}>
+      <div className="thesis-content" style={{ maxWidth: '400px', paddingBottom: '4rem' }}>
         <p className="thesis-para" style={{ fontSize: '1.6rem', lineHeight: '1.6' }}>
           {textContent.split('').map((char, cIdx) => {
             // Target: "core infrastructure"
