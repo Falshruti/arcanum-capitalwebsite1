@@ -233,23 +233,23 @@ const insightsData = [
   },
   {
     id: 21,
-    title: 'The First Decentralized AI Operating System by Zero Gravity Labs',
-    desc: 'Since ChatGPT took the world by storm in 2022, AI has become a global sensation, captivating attention not only for its remarkable applications but also for the potential risks it poses. ',
+    title: 'How Bitget Wallet is Bringing all of Web3 to the Table',
+    desc: 'Earlier this year, Bitget Wallet launched its first ecosystem token, BWB, marking a significant milestone in the platform’s commitment to enhancing user engagement.',
     category: 'Blog',
     tag: 'Blog',
     logo: blog10,
-    date: 'Nov 12, 2024',
-    url: 'https://arcanumcapital.medium.com/the-first-decentralized-ai-operating-system-by-zero-gravity-labs-29b994a2870a'
+    date: 'Aug 7, 2024',
+    url: 'https://arcanumcapital.medium.com/how-bitget-wallet-is-bringing-all-of-web3-to-the-table-413de6f4ec1c'
   },
   {
     id: 22,
-    title: 'The First Decentralized AI Operating System by Zero Gravity Labs',
-    desc: 'Since ChatGPT took the world by storm in 2022, AI has become a global sensation, captivating attention not only for its remarkable applications but also for the potential risks it poses. ',
+    title: 'How Cross the Ages is Redefining What Web3 Gaming Can Do',
+    desc: 'Cross the Ages has been busy since launching in 2020, building a rich fantasy universe backed by books, short films, and an immersive trading card game.',
     category: 'Blog',
     tag: 'Blog',
     logo: blog11,
-    date: 'Nov 12, 2024',
-    url: 'https://arcanumcapital.medium.com/the-first-decentralized-ai-operating-system-by-zero-gravity-labs-29b994a2870a'
+    date: 'Jun 12, 2024',
+    url: 'https://arcanumcapital.medium.com/test-8dac9603f3f0'
   }
 ];
 
