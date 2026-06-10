@@ -1,26 +1,29 @@
 .submit-profile-page {
   min-height: 100vh;
-  padding: 18vh 0 10vh;
+  padding: 160px 0 10vh;
   position: relative;
   overflow: hidden;
   color: #011222;
   /* Dark navy for form content */
 }
 
-.nexus-grid-bg {
+.submit-profile-page::before {
+  content: '';
   position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  pointer-events: none;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 220px;
+  background-image: linear-gradient(to bottom, rgba(10, 30, 55, 0) 50%, #0A1E37 95%), url('/hero-bg.png');
+  background-size: contain;
+  background-position: top;
+  background-repeat: repeat-x;
   z-index: 0;
-  background-image:
-    linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
-  background-size: 60px 60px;
-  transform: rotate(45deg);
-  mask-image: radial-gradient(circle at center, black, transparent 70%);
+  pointer-events: none;
+}
+
+.nexus-grid-bg {
+  display: none;
 }
 
 .sp-form-card {
@@ -139,6 +142,10 @@
 }
 
 @media (max-width: 768px) {
+  .submit-profile-page {
+    padding-top: 110px;
+  }
+
   .sp-form-card {
     padding: 2.5rem 1.5rem;
     border-radius: 20px;

@@ -2,25 +2,3 @@
   background-color: #0A1E37;
   color: #ffffff;
 }
-
-.home-page > section {
-  padding: 0;
-}
-
-.home-page > section:first-child {
-  padding-top: 4rem;
-}
-
-.home-page > section:last-child {
-  padding-bottom: 3rem;
-}
-
-@media (max-width: 900px) {
-  .home-page > section:first-child {
-    padding-top: 5rem;
-  }
-
-  .home-page > section:last-child {
-    padding-bottom: 2rem;
-  }
-}

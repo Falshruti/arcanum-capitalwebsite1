@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import './ThesisText.css';
 
-const textContent = "The development of this core infrastructure is driving the global adoption of Stablecoins.";
+const textContent = "The development of this core infrastructure is transforming payments, banking, capital markets, and the future of global commerce.";
 
 export default function PostTagsText() {
   const [scrollProgress, setScrollProgress] = useState(0);
@@ -52,14 +52,14 @@ export default function PostTagsText() {
       <div className="thesis-content" style={{ maxWidth: '400px', paddingBottom: '4rem' }}>
         <p className="thesis-para" style={{ fontSize: '1.6rem', lineHeight: '1.6' }}>
           {textContent.split('').map((char, cIdx) => {
-            // Target: "core infrastructure"
-            // Starts at index 24, length 19
+            // Target: "core infrastructure is transforming"
+            // Starts at index 24, length 35
             const targetStart = 24;
-            const targetEnd = 43;
+            const targetEnd = 59;
 
             let isActive = false;
             if (cIdx >= targetStart && cIdx < targetEnd) {
-              const activationPoint = (cIdx - targetStart + 1) / 19;
+              const activationPoint = (cIdx - targetStart + 1) / 35;
               isActive = scrollProgress >= activationPoint;
             }
 

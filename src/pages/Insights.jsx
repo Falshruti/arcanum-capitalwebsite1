@@ -172,7 +172,7 @@ const insightsData = [
     url: 'https://arcanumcapital.medium.com/the-home-of-ai-on-blockchain-with-capx-9eb7d66ce646'
   },
   {
-    id: 15,
+    id: 23,
     title: 'Babylon Labs and SatLayer',
     desc: 'Since its inception in 2009, Bitcoin has undergone a remarkable transformation, evolving from an obscure experiment in cryptography into a global financial asset.',
     category: 'Blog',
