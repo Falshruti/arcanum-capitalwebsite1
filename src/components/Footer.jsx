@@ -3,14 +3,15 @@ import { Link, useLocation } from 'react-router-dom';
 import './Footer.css';
 
 // Import highlight images from assets
-import highlight1 from '../assets/footer/highlights_1.png';
-import highlight2 from '../assets/footer/highlights_2.png';
-import highlight3 from '../assets/footer/highlights_3.png';
-import highlight4 from '../assets/footer/highlights_4.png';
+import highlight1 from '../assets/footer/highlights_1.jpg';
+import highlight2 from '../assets/footer/highlights_2.jpg';
+import highlight3 from '../assets/footer/highlights_3.jpg';
+import highlight4 from '../assets/footer/highlights_4.jpg';
+import highlight5 from '../assets/footer/highlights_5.jpg';
 import footerLogo from '../assets/footer/footer-logo.png';
 
 export default function Footer() {
-  const highlights = [highlight1, highlight2, highlight3, highlight4, highlight1, highlight2];
+  const highlights = [highlight1, highlight2, highlight3, highlight4, highlight5, highlight1];
   const location = useLocation();
   const hideNewsletter = ['/portfolio', '/insights', '/contact', '/nexus', '/submit-profile'].includes(location.pathname);
 

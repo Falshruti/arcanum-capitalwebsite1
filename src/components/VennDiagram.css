@@ -1,233 +1,497 @@
-.venn-section {
-  padding: 6rem 0 4rem 0;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-}
+/* =====================================================
+   Arcanum — Thesis Explorer (Venn Diagram Section)
+   Scroll-animated convergence field
+   ===================================================== */
 
-.venn-header {
-  max-width: 600px;
-  margin: 0 0 5rem 0;
-  text-align: left;
-}
-
-.venn-subtitle {
-  font-size: 1.2rem;
-  color: var(--text-secondary);
-  line-height: 1.6;
-}
-
-.venn-container {
+.explorer {
   position: relative;
-  width: 600px;
-  height: 600px;
-  margin: 0 auto;
+  height: 520vh;
 }
 
-.venn-circle {
-  position: absolute;
-  width: 400px;
-  height: 400px;
-  border-radius: 50%;
+.explorer-sticky {
+  position: sticky;
+  top: 85px; /* Offset to clear the fixed navbar on desktop */
+  height: calc(100svh - 85px);
+  min-height: 635px;
   display: flex;
   align-items: center;
-  justify-content: center;
-  font-size: 1.25rem;
-  font-weight: 500;
-  color: var(--text-secondary);
-  cursor: pointer;
-  z-index: 1;
-  background: radial-gradient(circle, rgba(255, 255, 255, 0.03) 0%, transparent 70%);
-  background-color: transparent;
-  transition: background-color 0.4s ease;
+  overflow: clip;
 }
 
-.venn-circle::before {
-  content: '';
+.explorer-shell {
+  width: min(1480px, 100%);
+  height: 100%;
+  margin: 0 auto;
+  padding: 20px clamp(24px, 6vw, 100px); /* Reduced top/bottom padding to maximize vertical area */
+  display: grid;
+  grid-template-columns: minmax(280px, .82fr) minmax(0, 1.42fr);
+  gap: clamp(48px, 6vw, 120px);
+  align-items: center;
+}
+
+.explorer-copy {
+  position: relative;
+  height: min(670px, 82vh);
+  min-height: 580px;
+}
+
+.explorer-panel {
   position: absolute;
   inset: 0;
-  border-radius: 50%;
-  border: none;
-  background-image: url("data:image/svg+xml,%3Csvg width='400' height='400' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='200' cy='200' r='199' fill='none' stroke='rgba(255, 255, 255, 0.5)' stroke-width='1' stroke-dasharray='8 14'/%3E%3C/svg%3E");
-  transition: opacity 0.4s ease;
-  z-index: -1;
-  pointer-events: none;
-  animation: spinSlow 40s linear infinite;
-}
-
-@keyframes spinSlow {
-  0% {
-    transform: rotate(0deg);
-  }
-
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
-.venn-circle.venn-solid {
-  background-color: rgba(255, 255, 255, 0.12);
-}
-
-.venn-circle.venn-solid::before {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   opacity: 0;
-}
-
-.venn-top {
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  align-items: flex-start;
-  padding-top: 5.8rem;
-}
-
-.venn-left {
-  bottom: 0;
-  left: 0;
-  align-items: flex-end;
-  padding-bottom: 8.5rem;
-  padding-right: 12rem;
-}
-
-.venn-right {
-  bottom: 0;
-  right: 0;
-  align-items: flex-end;
-  padding-bottom: 8.5rem;
-  padding-left: 12rem;
-}
-
-.venn-label {
-  position: absolute;
-  font-size: 0.85rem;
-  font-weight: 600;
-  color: #8fa0b5;
-  /* Default muted matching design */
-  z-index: 10;
-  text-align: center;
-  line-height: 1.3;
+  transform: translate3d(0, 28px, 0);
   pointer-events: none;
-  transition: color 0.3s ease;
+  will-change: opacity, transform;
 }
 
-.venn-label.active-text {
-  color: #ffffff;
-  /* Becomes bright white dynamically based on Venn intersect */
+.explorer-panel h2 {
+  margin: 0;
+  max-width: 540px;
+  min-height: 190px;
+  font-family: 'Open Sans', Arial, sans-serif;
+  font-size: clamp(44px, 4.2vw, 70px);
+  font-weight: 400;
+  line-height: .98;
+  letter-spacing: -.047em;
+  color: #f6f7fa;
 }
 
-.label-center {
-  top: 55%;
+.explorer-panel p {
+  margin: 28px 0 0;
+  max-width: 460px;
+  min-height: 88px;
+  color: #9fa9b8;
+  font-size: clamp(14px, 1.05vw, 16.5px);
+  line-height: 1.7;
+}
+
+.explorer-topics {
+  width: min(470px, 100%);
+  min-height: 184px;
+  margin: 35px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.explorer-topics li {
+  display: grid;
+  grid-template-columns: 1fr;
+  align-items: center;
+  min-height: 42px;
+  border-top: 1px solid rgba(204, 209, 217, .12);
+  color: #dce2eb;
+  font-size: 13px;
+}
+
+.explorer-topics li:last-child {
+  border-bottom: 1px solid rgba(204, 209, 217, .12);
+}
+
+.explorer-topics--empty {
+  visibility: hidden;
+}
+
+.explorer-progress {
+  position: absolute;
+  left: 0;
+  bottom: 18px;
+  display: flex;
+  align-items: center;
+  gap: 0;
+  color: #97a2b5;
+  font: 9px/1 'Open Sans', Arial, sans-serif;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+}
+
+.explorer-progress__track {
+  position: relative;
+  width: 168px;
+  height: 1px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, .12);
+}
+
+.explorer-progress__bar {
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 0;
+  background: rgba(255, 255, 255, .74);
+  will-change: width;
+}
+
+.explorer-visual {
+  position: relative;
+  width: 100%;
+  max-height: 840px;
+  min-height: 680px;
+  aspect-ratio: 760 / 730;
+  isolation: isolate;
+  overflow: visible;
+}
+
+.explorer-visual::before {
+  content: "";
+  position: absolute;
+  inset: 9%;
+  pointer-events: none;
+  background: radial-gradient(circle at 50% 56%, rgba(255, 255, 255, .038), transparent 51%);
+  filter: blur(12px);
+}
+
+#venn-particles {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.explorer-diagram {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  display: block;
+  overflow: visible;
+}
+
+.venn-ring {
+  fill: rgba(15, 41, 74, .16);
+  stroke: none;
+  stroke-width: 0;
+  vector-effect: non-scaling-stroke;
+  will-change: opacity, filter;
+}
+
+.venn-inner-ring {
+  fill: none;
+  stroke: none;
+  stroke-width: 0;
+  vector-effect: non-scaling-stroke;
+  will-change: opacity;
+}
+
+.venn-pair {
+  fill: rgba(255, 255, 255, .018);
+  opacity: 0;
+  will-change: opacity;
+}
+
+.venn-triple {
+  fill: rgba(255, 255, 255, .032);
+  opacity: 0;
+  will-change: opacity;
+}
+
+.venn-domain,
+.venn-zone {
+  position: absolute;
+  z-index: 3;
+  pointer-events: none;
+  will-change: opacity, transform;
+}
+
+.venn-domain {
+  color: #9fa9b8;
+  opacity: .62;
+}
+
+.venn-domain strong {
+  font-size: 15px;
+  font-weight: 540;
+  letter-spacing: .035em;
+}
+
+.venn-domain.fintech,
+.venn-domain.blockchain,
+.venn-domain.ai {
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.venn-zone {
+  color: #d4dae5;
+  text-align: center;
+  opacity: .14;
+}
+
+.venn-zone strong {
+  display: block;
+  font-size: 12px;
+  font-weight: 540;
+  line-height: 1.2;
+}
+
+.venn-zone.stable,
+.venn-zone.intelligence,
+.venn-zone.commerce {
+  transform: translate(-50%, -50%);
+}
+
+.venn-zone.focus {
+  width: clamp(170px, 22vw, 310px);
+  transform: translate(-50%, -50%);
+  opacity: .12;
+}
+
+.venn-zone.focus strong {
+  font-family: 'Open Sans', Arial, sans-serif;
+  font-size: clamp(22px, 2.15vw, 35px);
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: -.035em;
+}
+
+.venn-focus-node {
+  width: 4px;
+  height: 4px;
+  margin: 0 auto 16px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 0 0 5px rgba(255, 255, 255, .035), 0 0 20px rgba(255, 255, 255, .46);
+  animation: venn-breathe 5.8s ease-in-out infinite;
+}
+
+@keyframes venn-breathe {
+  0%, 100% {
+    opacity: .45;
+    transform: scale(.86);
+    box-shadow: 0 0 0 4px rgba(255, 255, 255, .025), 0 0 11px rgba(255, 255, 255, .24);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.25);
+    box-shadow: 0 0 0 8px rgba(255, 255, 255, .05), 0 0 27px rgba(255, 255, 255, .5);
+  }
+}
+
+.explorer-scroll-hint {
+  position: absolute;
   left: 50%;
-  transform: translate(-50%, -50%);
+  bottom: 24px;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: rgba(194, 203, 218, .5);
+  font: 8px/1 'Open Sans', Arial, sans-serif;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  pointer-events: none;
+  will-change: opacity;
 }
 
-.label-top-left {
-  top: 44%;
-  left: 30%;
-  transform: translate(-50%, -50%);
+.explorer-scroll-hint::before {
+  content: "";
+  width: 1px;
+  height: 28px;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, .04), rgba(255, 255, 255, .5));
+  animation: venn-drop 1.8s ease-in-out infinite;
 }
 
-.label-top-right {
-  top: 44%;
-  left: 70%;
-  transform: translate(-50%, -50%);
+@keyframes venn-drop {
+  0%, 100% {
+    transform: scaleY(.4);
+    transform-origin: top;
+    opacity: .3;
+  }
+  50% {
+    transform: scaleY(1);
+    opacity: 1;
+  }
 }
 
-.label-bottom {
-  top: 75%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+/* ─── Responsive ─────────────────────────────────────── */
+
+@media (max-height: 780px) and (min-width: 901px) {
+  .explorer-shell {
+    padding-top: 22px;
+    padding-bottom: 22px;
+  }
+  .explorer-copy {
+    height: 620px;
+    min-height: 620px;
+  }
+  .explorer-panel h2 {
+    min-height: 158px;
+    font-size: clamp(40px, 3.65vw, 58px);
+  }
+  .explorer-panel p {
+    min-height: 72px;
+    margin-top: 20px;
+  }
+  .explorer-topics {
+    min-height: 150px;
+    margin-top: 20px;
+  }
+  .explorer-topics li {
+    min-height: 36px;
+    font-size: 12.5px;
+  }
+  .explorer-progress {
+    bottom: 0;
+  }
+  .explorer-visual {
+    min-height: 600px;
+    max-height: 680px;
+  }
 }
 
 @media (max-width: 900px) {
-  .venn-section {
-    padding: 2rem 0 6rem;
+  .explorer-sticky {
+    top: 90px; /* clear fixed navbar on mobile */
+    min-height: 760px;
   }
-
-  .venn-container {
-    width: 280px;
-    height: 600px;
+  .explorer-shell {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    align-content: start;
+    padding-top: 100px; /* clear fixed navbar on mobile */
+    padding-bottom: 24px;
+  }
+  .explorer-copy {
+    height: 310px;
+    min-height: 310px;
+  }
+  .explorer-panel {
+    justify-content: flex-start;
+  }
+  .explorer-panel h2 {
+    min-height: unset;
+    max-width: 780px;
+    font-size: clamp(38px, 6vw, 60px);
+  }
+  .explorer-panel p {
+    min-height: unset;
+    margin-top: 14px;
+    max-width: 680px;
+  }
+  .explorer-topics {
+    min-height: 112px;
+    margin-top: 16px;
+    max-width: 780px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 24px;
+  }
+  .explorer-topics li {
+    min-height: 34px;
+    font-size: 12px;
+  }
+  .explorer-progress {
+    bottom: 0;
+  }
+  .explorer-visual {
+    min-height: 460px;
+    max-height: 58vh;
+    max-width: 790px;
     margin: 0 auto;
-    position: relative;
   }
-
-  .venn-circle {
-    width: 280px;
-    height: 280px;
-    left: 0 !important;
-    transform: none !important;
-    padding: 0 !important;
-    font-size: 1.15rem;
-  }
-
-  /* Vertical positioning with overlap */
-  .venn-top {
-    top: 0;
-    justify-content: center;
-    align-items: center;
-    padding-bottom: 5rem !important;
-    /* Move text up to allow space for intersection label */
-  }
-
-  .venn-left {
-    top: 160px;
-    /* Overlaps top circle */
-    bottom: auto;
-    justify-content: center;
-    align-items: center;
-    padding: 0 !important;
-    z-index: 5;
-    /* Ensure middle circle is more prominent */
-  }
-
-  .venn-right {
-    top: 320px;
-    /* Overlaps middle circle */
-    bottom: auto;
-    justify-content: center;
-    align-items: center;
-    padding-top: 5rem !important;
-    /* Move text down */
-  }
-
-  /* Specific border styles from image */
-  .venn-left.venn-solid {
-    background-color: rgba(255, 255, 255, 0.15);
-  }
-
-  /* Reset SVG background for smaller circles on mobile */
-  .venn-circle::before {
-    background-image: url("data:image/svg+xml,%3Csvg width='280' height='280' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='140' cy='140' r='139' fill='none' stroke='rgba(255, 255, 255, 0.4)' stroke-width='1' stroke-dasharray='6 10'/%3E%3C/svg%3E");
-  }
-
-  /* Interaction Mapping */
-  .venn-label {
-    width: 100%;
-    left: 0 !important;
-    right: auto !important;
-    transform: none !important;
-    font-size: 1rem;
-    color: #fff;
-    opacity: 1;
-    pointer-events: auto;
-  }
-
-  .label-center,
-  .label-top-right {
+  .explorer-scroll-hint {
     display: none;
-    /* Hide center and OS Improvements on mobile */
   }
+}
 
-  .label-top-left {
-    /* Stablecoins */
-    top: 203px;
-    z-index: 10;
+@media (max-width: 650px) {
+  .explorer-shell {
+    padding: 95px 20px 16px; /* clear navbar */
   }
+  .explorer-copy {
+    height: 350px;
+    min-height: 350px;
+  }
+  .explorer-panel h2 {
+    font-size: clamp(37px, 11.5vw, 54px);
+    max-width: 450px;
+  }
+  .explorer-panel p {
+    font-size: 14px;
+    line-height: 1.58;
+  }
+  .explorer-topics {
+    grid-template-columns: 1fr;
+    min-height: 148px;
+    margin-top: 13px;
+  }
+  .explorer-topics li {
+    min-height: 31px;
+    font-size: 11px;
+  }
+  .explorer-visual {
+    min-height: 410px;
+    aspect-ratio: .88 / 1;
+  }
+  .venn-domain strong {
+    font-size: 11px;
+  }
+  .venn-zone strong {
+    font-size: 9px;
+  }
+  .venn-zone.focus {
+    width: 190px;
+  }
+  .venn-zone.focus strong {
+    font-size: 21px;
+  }
+  .explorer-progress {
+    display: none;
+  }
+}
 
-  .label-bottom {
-    /* Agentic Payments */
-    top: 353px;
-    bottom: auto;
-    z-index: 10;
+@media (max-width: 650px) and (max-height: 740px) {
+  .explorer-sticky {
+    top: 75px;
+    min-height: 100svh;
+  }
+  .explorer-shell {
+    padding: 80px 18px 10px;
+    gap: 6px;
+  }
+  .explorer-copy {
+    height: 305px;
+    min-height: 305px;
+  }
+  .explorer-panel h2 {
+    font-size: clamp(31px, 9.4vw, 38px);
+    line-height: .97;
+  }
+  .explorer-panel p {
+    margin-top: 8px;
+    font-size: 12.5px;
+    line-height: 1.45;
+  }
+  .explorer-topics {
+    min-height: 98px;
+    margin-top: 7px;
+  }
+  .explorer-topics li {
+    min-height: 24px;
+    font-size: 10px;
+  }
+  .explorer-progress {
+    display: none;
+  }
+  .explorer-visual {
+    min-height: 300px;
+    max-height: 315px;
+    aspect-ratio: .98 / 1;
+  }
+  .venn-zone.focus {
+    width: 150px;
+  }
+  .venn-zone.focus strong {
+    font-size: 18px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .venn-focus-node,
+  .explorer-scroll-hint::before {
+    animation: none;
   }
 }
