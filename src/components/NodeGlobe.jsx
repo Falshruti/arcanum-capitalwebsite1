@@ -45,24 +45,24 @@ const CONFIG = {
   starMaxOpacity: 0.55,      // near stars
 
   // ---------- TRANSACTIONS ----------
-  maxActive:     6,          // cap simultaneous arcs in flight
-  spawnEveryMin: 1.10,       // seconds — min gap between spawns
-  spawnEveryMax: 2.66,       // seconds — max gap
+  maxActive:     10,         // cap simultaneous arcs in flight
+  spawnEveryMin: 0.30,       // seconds — min gap between spawns
+  spawnEveryMax: 0.85,       // seconds — max gap
 
   arcLift:       0.225,      // how high the arc bulges above surface
   endpointLift:  1.012,       // endpoints sit at radius * this (dots, arc tips, pulses all aligned)
   farSideDim:    0.18,        // brightness multiplier for endpoints on the back of the globe
   arcSweepDur:   2.1,        // seconds for head to travel end-to-end
-  arcHoldDur:    1.5,        // arc stays bright while destination pulse plays out (matches pulseDur)
-  arcFadeDur:    1.5,        // slow ~1.5s fade-out begins after the pulse has resolved
+  arcHoldDur:    1.0,        // arc stays bright while destination pulse plays out
+  arcFadeDur:    1.0,        // fade-out — total post-impact ≈ 2s
 
   arcSegments:   220,        // curve sample count (higher = silkier head motion)
   arcTailFrac:   0.3,        // comet tail length as fraction of arc
-  arcLineOpacity: 0.95,      // peak arc brightness
-  arcPersistOpacity: 0.45,   // arc brightness after landing
+  arcLineOpacity: 0.80,      // peak arc brightness
+  arcPersistOpacity: 0.32,   // arc brightness after landing
 
   pulseMaxScale: 9.75,        // pulse rings grow to this * base ring size
-  pulseDur:      1.4,         // seconds for a pulse to expand + fade (must finish before arcFade)
+  pulseDur:      0.95,        // seconds for a pulse to expand + fade (must finish within arcHoldDur)
   pulseBaseInner: 0.028,      // ring inner radius
   pulseBaseOuter: 0.064,      // ring outer radius (thicker = more visible)
   pulseOpacity:   1.0,        // peak opacity at spawn
@@ -794,7 +794,7 @@ export default function NodeGlobe() {
       let a = randomLandPoint();
       let b = randomLandPoint();
       let tries = 0;
-      while (a.distanceTo(b) < CONFIG.radius * 1.9 && tries < 40) {
+      while (a.distanceTo(b) < CONFIG.radius * 1.4 && tries < 40) {
         b = randomLandPoint();
         tries++;
       }
@@ -803,8 +803,10 @@ export default function NodeGlobe() {
 
     let spawnTimeouts = [];
     spawnTransaction();
-    spawnTimeouts.push(setTimeout(spawnTransaction, 400));
-    spawnTimeouts.push(setTimeout(spawnTransaction, 900));
+    spawnTimeouts.push(setTimeout(spawnTransaction, 200));
+    spawnTimeouts.push(setTimeout(spawnTransaction, 500));
+    spawnTimeouts.push(setTimeout(spawnTransaction, 850));
+    spawnTimeouts.push(setTimeout(spawnTransaction, 1250));
 
     // Drag interaction state
     const drag = {
