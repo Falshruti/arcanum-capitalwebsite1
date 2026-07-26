@@ -50,6 +50,7 @@
   display: flex;
   flex-direction: column;
   gap: 3rem;
+  width: 100%;
 }
 
 .thesis-para {
@@ -75,6 +76,12 @@
   }
 }
 
+/* PostTagsText uses a slightly larger size on desktop */
+.post-tags-para {
+  font-size: 1.6rem;
+  line-height: 1.6;
+}
+
 .nav-word {
   transition: color 0.15s ease-out;
 }
@@ -92,6 +99,21 @@
 
 @media (max-width: 768px) {
   .thesis-para {
-    font-size: 1.5rem;
+    font-size: 1.1rem;
+    line-height: 1.7;
+    letter-spacing: -0.2px;
+  }
+
+  .post-tags-para {
+    font-size: 1.1rem;
+  }
+
+  .thesis-content {
+    max-width: 100%;
+    padding: 0 0.5rem;
+  }
+
+  .thesis-sticky {
+    padding: 3rem 1.25rem;
   }
 }

@@ -50,7 +50,7 @@ export default function PostTagsText() {
       }}
     >
       <div className="thesis-content" style={{ maxWidth: '400px', paddingBottom: '4rem' }}>
-        <p className="thesis-para" style={{ fontSize: '1.6rem', lineHeight: '1.6' }}>
+        <p className="thesis-para post-tags-para">
           {textContent.split('').map((char, cIdx) => {
             // Target: "core infrastructure is transforming"
             // Starts at index 24, length 35

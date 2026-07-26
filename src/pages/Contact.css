@@ -156,7 +156,6 @@
   margin-bottom: 1rem;
 }
 
-/* Responsive */
 @media (max-width: 900px) {
   .contact-page {
     padding-top: 110px;
@@ -176,3 +175,13 @@
   }
 }
 
+@media (max-width: 768px) {
+  .contact-title {
+    font-size: 28px;
+  }
+
+  .contact-desc {
+    font-size: 0.95rem;
+    line-height: 1.65;
+  }
+}

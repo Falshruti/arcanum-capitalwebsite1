@@ -199,11 +199,23 @@
     gap: 2rem;
   }
 
+  .insights-title {
+    font-size: 28px;
+  }
+
   .insights-grid {
     grid-template-columns: 1fr;
   }
 
   .insight-card {
     min-height: auto;
+  }
+
+  .card-title {
+    font-size: 1.05rem;
+  }
+
+  .card-desc {
+    font-size: 0.85rem;
   }
 }

@@ -8,7 +8,7 @@ import highlight2 from '../assets/footer/highlights_2.jpg';
 import highlight3 from '../assets/footer/highlights_3.jpg';
 import highlight4 from '../assets/footer/highlights_4.jpg';
 import highlight5 from '../assets/footer/highlights_5.jpg';
-import highlight6 from '../assets/footer/highlights_6.png';
+import highlight6 from '../assets/footer/highlights_6.jpeg';
 import footerLogo from '../assets/footer/footer-logo.png';
 
 export default function Footer() {

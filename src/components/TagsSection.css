@@ -306,7 +306,7 @@
   }
 
   .ts-row {
-    margin: 0 0 4rem 0 !important;
+    margin: 0 0 1.8rem 0 !important;
     width: 100%;
     max-width: 320px;
     justify-content: center;
@@ -329,7 +329,7 @@
 
   .ts-dual {
     flex-direction: column;
-    gap: 4rem;
+    gap: 1.5rem;
     width: 100%;
     align-items: center;
   }
