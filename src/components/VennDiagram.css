@@ -345,7 +345,8 @@
 @media (max-width: 900px) {
   .explorer-sticky {
     top: 90px; /* clear fixed navbar on mobile */
-    min-height: 760px;
+    min-height: 820px;
+    overflow: visible;
   }
   .explorer-shell {
     grid-template-columns: 1fr;
@@ -392,7 +393,8 @@
     min-height: 460px;
     max-height: 58vh;
     max-width: 790px;
-    margin: 0 auto;
+    margin: -39px auto 0;
+    overflow: visible;
   }
   .explorer-scroll-hint {
     display: none;
@@ -425,8 +427,9 @@
     font-size: 11px;
   }
   .explorer-visual {
-    min-height: 410px;
+    min-height: 380px;
     aspect-ratio: .88 / 1;
+    overflow: visible;
   }
   .venn-domain strong {
     font-size: 11px;
