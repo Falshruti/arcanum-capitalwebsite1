@@ -17,6 +17,8 @@ import satlayerLogo from '../assets/fund2logos/satlayer.png';
 import satiLogo from '../assets/fund2logos/sati.png';
 import showdownLogo from '../assets/fund2logos/showdown.png';
 import symphonyLogo from '../assets/fund2logos/symphony.png';
+import crosspointLogo from '../assets/fund2logos/crosspoint.png';
+import zircuitLogo from '../assets/fund2logos/zircuit.png';
 
 // Fund I Logos (exact assets from arcanum.capital)
 import availLogo from '../assets/fund1logos/avail.png';
@@ -117,7 +119,7 @@ const Portfolio = () => {
 
     // Fund II
     { id: 32, fund: 'Fund II', name: 'Babylon', category: 'BITCOIN STAKING', date: '2024', entry: 'Seed', isImg: true, icon: babylonLogo, url: 'https://babylonlabs.io/' },
-    { id: 33, fund: 'Fund II', name: 'Crosspoint', category: 'GLOBAL PAYMENTS', date: '2024', entry: 'Seed', isImg: false, url: 'https://www.crosspoint.global/' },
+    { id: 33, fund: 'Fund II', name: 'Crosspoint', category: 'GLOBAL PAYMENTS', date: '2024', entry: 'Seed', isImg: true, icon: crosspointLogo, url: 'https://www.crosspoint.global/' },
     { id: 34, fund: 'Fund II', name: 'DEIN', category: 'ONCHAIN INSURANCE', date: '2025', entry: 'Seed', isImg: true, icon: logo3, url: 'https://dein.fi/' },
     { id: 35, fund: 'Fund II', name: 'GAIB', category: 'AI COMPUTE FINANCE', date: '2025', entry: 'Seed', isImg: true, icon: logo4, url: 'https://gaib.ai/' },
     { id: 36, fund: 'Fund II', name: 'HIFI', category: 'RWA LENDING', date: '2024', entry: 'Seed', isImg: true, icon: hifiLogo, url: 'https://hifi.com' },
@@ -132,7 +134,7 @@ const Portfolio = () => {
     { id: 45, fund: 'Fund II', name: 'Symphony', category: 'DIGITAL WEALTH', date: '2025', entry: 'Seed', isImg: true, icon: symphonyLogo, url: 'https://www.symphony.io/' },
     { id: 46, fund: 'Fund II', name: 'TR8DE.AI', category: 'AI TRADING TERMINAL', date: '2025', entry: 'Pre-Seed', isImg: true, icon: logo1, url: 'https://www.tr8de.ai/' },
     { id: 47, fund: 'Fund II', name: 'UTEXO', category: 'STABLECOIN SETTLEMENT', date: '2025', entry: 'Seed', isImg: true, icon: logo2, url: 'https://utexo.com/' },
-    { id: 48, fund: 'Fund II', name: 'Zircuit', category: 'NEOFINANCE', date: '2024', entry: 'Seed', isImg: false, url: 'https://www.zircuit.com/' },
+    { id: 48, fund: 'Fund II', name: 'Zircuit', category: 'NEOFINANCE', date: '2024', entry: 'Seed', isImg: true, icon: zircuitLogo, url: 'https://www.zircuit.com/' },
   ];
 
   const filteredTableData = activeFilter === 'All'
