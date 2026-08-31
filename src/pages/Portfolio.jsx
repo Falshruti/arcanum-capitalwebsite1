@@ -29,7 +29,7 @@ const Portfolio = () => {
       id: 2,
       fund: 'ARCANUM EMERGING TECHNOLOGIES FUND II',
       filter: 'Fund II',
-      description: 'Fund II is focused on the blockchain-based payments stack.',
+      description: 'Fund II backs fintech, blockchain, and AI innovations shaping intelligent, decentralized finance.',
       stages: 'Pre-Seed - Series A',
       vintage: '2025',
       anchor: 'Tether, Tim Draper',
@@ -67,8 +67,8 @@ const Portfolio = () => {
     { id: 26, fund: 'Fund I', name: 'TallyUP!', category: 'CASUAL GAMING', date: '2022', entry: 'Seed', isImg: false, url: 'https://www.tallyup.com/' },
     { id: 27, fund: 'Fund I', name: 'VURSE', category: 'CREATOR ECONOMY', date: '2022', entry: 'Pre-Seed', isImg: false, url: 'https://vurse.com/' },
     { id: 28, fund: 'Fund I', name: 'ZED', category: 'AI CRM', date: '2022', entry: 'Pre-Seed', isImg: false, url: 'https://zexponential.com' },
- 
-     // Fund II
+
+    // Fund II
     { id: 29, fund: 'Fund II', name: 'Babylon', category: 'BITCOIN STAKING', date: '2024', entry: 'Seed', isImg: true, icon: babylonLogo, url: 'https://babylonlabs.io/' },
     { id: 30, fund: 'Fund II', name: 'Crosspoint', category: 'GLOBAL PAYMENTS', date: '2024', entry: 'Seed', isImg: false, url: 'https://www.crosspoint.global/' },
     { id: 31, fund: 'Fund II', name: 'DEIN', category: 'ONCHAIN INSURANCE', date: '2025', entry: 'Seed', isImg: true, icon: logo3, url: 'https://dein.fi/' },
@@ -181,11 +181,11 @@ const Portfolio = () => {
 
           <div className="table-body">
             {filteredTableData.map(item => (
-              <a 
-                key={item.id} 
-                className="table-row" 
-                href={item.url} 
-                target="_blank" 
+              <a
+                key={item.id}
+                className="table-row"
+                href={item.url}
+                target="_blank"
                 rel="noopener noreferrer"
               >
                 <div className="col-name">
