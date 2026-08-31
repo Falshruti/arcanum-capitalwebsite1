@@ -316,12 +316,17 @@
 }
 
 .name-icon-img {
-  height: 24px;
+  height: 26px;
   width: auto;
   max-width: 140px;
   object-fit: contain;
-  filter: grayscale(100%) opacity(0.55);
-  transition: filter 0.3s ease, opacity 0.3s ease;
+  opacity: 0.85;
+  transition: opacity 0.3s ease, transform 0.2s ease, filter 0.3s ease;
+}
+
+.table-row:hover .name-icon-img {
+  opacity: 1;
+  transform: translateY(-1px);
 }
 
 .name-text {
